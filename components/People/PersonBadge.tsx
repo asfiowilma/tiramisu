@@ -12,7 +12,7 @@ const PersonBadge = ({ name, uid }: PersonProps) => {
           colors={["#92A1C6", "#146A7C", "#F0AB3D", "#C271B4", "#C20D90"]}
         />
       </div>
-      {name}
+      <span className="max-w-[12ch] truncate">{name}</span>
     </div>
   );
 };

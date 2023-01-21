@@ -13,8 +13,10 @@ const ReceiptTable = ({ activeTab }: ReceiptTableProps) => {
   return (
     <table className="table table-auto table-compact">
       <thead>
-        <th className="w-full">Item Name</th>
-        <th>Subtotal</th>
+        <tr>
+          <th className="w-full">Item Name</th>
+          <th>Subtotal</th>
+        </tr>
       </thead>
       <tbody>
         {bill

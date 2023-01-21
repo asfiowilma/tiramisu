@@ -26,13 +26,14 @@ const AddPersonForm = () => {
             <span>
               <FaUserAlt />
             </span>
+            <input type="hidden" {...register("uid")} />
             <input
               type="text"
+              maxLength={20}
               placeholder="Enter person's name"
-              className="input input-bordered flex-1"
+              className="input input-bordered flex-1 w-full"
               {...register("name", { required: true })}
             />
-            <input type="hidden" {...register("uid")} />
             <button type="submit" className="btn btn-primary">
               Add
             </button>

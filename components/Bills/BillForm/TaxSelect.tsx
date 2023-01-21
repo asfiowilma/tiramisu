@@ -10,7 +10,7 @@ const TaxSelect = ({ register, setIsTaxModalOpen }: TaxInputProps) => {
         <label className="label font-medium text-sm">Tax</label>
         <div className="input-group">
           <select
-            className="select select-bordered flex-1"
+            className="select select-bordered w-full flex-1"
             placeholder="How much was it?"
             {...register("tax")}
           >
@@ -25,7 +25,7 @@ const TaxSelect = ({ register, setIsTaxModalOpen }: TaxInputProps) => {
           </select>
           <span onClick={() => setIsTaxModalOpen(true)} className="btn btn-secondary gap-2">
             <FaPlus />
-            New Tax Rate
+            <div className="hidden sm:inline">New</div> Tax Rate
           </span>
         </div>
       </div>

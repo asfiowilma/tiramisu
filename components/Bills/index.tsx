@@ -26,9 +26,9 @@ const BillTab = () => {
 
   return (
     <>
-      <div className="card compact bg-base-100 my-6">
+      <div className="card compact bg-base-100 mt-6 mb-4 sm:mb-6">
         <div className="card-body">
-          <div className="flex pt-1 pl-4 justify-between">
+          <div className="flex py-1 pl-4 justify-between">
             <div className="card-title">
               <IoReceipt className="w-5 h-5" /> Bill
             </div>
@@ -55,33 +55,35 @@ const BillTab = () => {
               </button>
             </div>
           </div>
-          <table className="table table-auto table-zebra">
-            <thead>
-              <tr>
-                <th className="w-full">Item Name</th>
-                <th>Subtotal</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {bill.map((billItem) => (
-                <BillRow key={billItem.uid} setIsModalOpen={setIsModalOpen} {...billItem} />
-              ))}
-              {bill.length === 0 && (
+          <div className="overflow-x-auto">
+            <table className="table table-auto table-zebra table-compact xs:table-normal">
+              <thead>
                 <tr>
-                  <td colSpan={3}>
-                    <div className="flex flex-col items-center text-center gap-2">
-                      No item yet.
-                      <button onClick={newItem} className="btn btn-primary gap-2">
-                        <FaPlus className="w-4 h-4" />
-                        Add Item
-                      </button>
-                    </div>
-                  </td>
+                  <th className="w-full">Item Name</th>
+                  <th>Subtotal</th>
+                  <th></th>
                 </tr>
-              )}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {bill.map((billItem) => (
+                  <BillRow key={billItem.uid} setIsModalOpen={setIsModalOpen} {...billItem} />
+                ))}
+                {bill.length === 0 && (
+                  <tr>
+                    <td colSpan={3}>
+                      <div className="flex flex-col items-center text-center gap-2">
+                        No item yet.
+                        <button onClick={newItem} className="btn btn-primary gap-2">
+                          <FaPlus className="w-4 h-4" />
+                          Add Item
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
       <BillSummary />

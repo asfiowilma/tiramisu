@@ -35,7 +35,7 @@ const BillRow = ({
       <tr>
         <td className="whitespace-normal flex flex-col">
           <div className="font-medium text-black dark:text-white">{name}</div>
-          {desc && <p className="text-slate-400">{desc}</p>}
+          {desc && <p className="text-slate-400 max-w-[20ch] sm:max-w-max">{desc}</p>}
           {taxUid != untaxed.uid && (
             <p>
               Tax: {tax?.name} ({tax?.rate}%)

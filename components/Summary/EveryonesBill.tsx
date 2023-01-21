@@ -42,18 +42,22 @@ const EveryonesBill = ({ resetEverything }: EveryonesBillProps) => {
   }, [ref]);
 
   return (
-    <div className="bg-base-100 my-6 card overflow-hidden">
+    <div className="bg-base-100 mt-6 mb-4 xs:my-6 card card-compact ms:card-normal overflow-hidden">
       <div className="card-body bg-base-100" ref={ref}>
         <div className="card-title w-full">
           <IoReceipt className="w-5 h-5" /> Everyone&apos;s Bill
           {isPrinting && (
-            <span className="flex-1 text-right text-gray-300 dark:text-gray-500">
+            <span className="flex-1 text-sm xs:text-base text-right text-gray-300 dark:text-gray-500">
               {new Date().toLocaleDateString()}
             </span>
           )}
         </div>
         <SummaryTable />
-        <div className={`card-actions self-end ${isPrinting && "hidden"}`}>
+        <div
+          className={`card-actions flex-col items-stretch xs:flex-row xs:items-start xs:self-end ${
+            isPrinting && "hidden"
+          }`}
+        >
           <button onClick={resetEverything} className="btn btn-outline btn-error gap-2">
             <FaTrashAlt /> Reset Everything
           </button>
@@ -62,8 +66,8 @@ const EveryonesBill = ({ resetEverything }: EveryonesBillProps) => {
           </button>
         </div>
         {isPrinting && (
-          <p className="text-center text-sm font-mono text-gray-300 dark:text-gray-600">
-            Generated with Tiramisu Split Bill by Lyth
+          <p className="text-center text-xs ms:text-sm font-mono text-gray-300 dark:text-gray-600">
+            Generated with <br className="inline xs:hidden" /> Tiramisu Split Bill by Lyth
           </p>
         )}
       </div>

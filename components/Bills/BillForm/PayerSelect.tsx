@@ -16,7 +16,7 @@ const PayerSelect = ({ register, clearPayerSelection, selectEveryone }: PayerSel
         </button>
       </div>
       <div className="form-control">
-        <div className="grid grid-cols-2 gap-x-4">
+        <div className="grid grid-cols-1 ms:grid-cols-2 gap-x-4">
           {people.map((person) => (
             <label
               key={person.uid}

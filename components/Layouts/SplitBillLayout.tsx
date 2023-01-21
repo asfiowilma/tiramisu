@@ -16,34 +16,36 @@ const SplitBillLayout = ({ children }: LayoutProps) => {
       <Head>
         <title>Tiramisu | Split Bill</title>
       </Head>
-      <Navbar />
-      <main className="bg-base-200 min-h-screen p-6">
-        <ul className="steps w-full">
-          <li
-            onClick={() => setActiveSplitBillStep("people")}
-            className="step cursor-pointer transition step-primary"
-          >
-            People
-          </li>
-          <li
-            onClick={() => setActiveSplitBillStep("bill")}
-            className={`step cursor-pointer transition ${
-              activeSplitBillStep !== "people" && "step-primary"
-            }`}
-          >
-            Bill
-          </li>
-          <li
-            onClick={() => setActiveSplitBillStep("summary")}
-            className={`step cursor-pointer transition ${
-              activeSplitBillStep === "summary" && "step-primary"
-            }`}
-          >
-            Summary
-          </li>
-        </ul>
-        {children}
-      </main>
+      <div className="min-h-screen flex flex-col  items-center bg-base-200 ">
+        <Navbar />
+        <main className="flex-1 px-2 py-6 ms:p-4 ms:pt-6 sm:p-6 max-w-screen-sm w-full">
+          <ul className="steps w-full">
+            <li
+              onClick={() => setActiveSplitBillStep("people")}
+              className="step cursor-pointer transition step-primary"
+            >
+              People
+            </li>
+            <li
+              onClick={() => setActiveSplitBillStep("bill")}
+              className={`step cursor-pointer transition ${
+                activeSplitBillStep !== "people" && "step-primary"
+              }`}
+            >
+              Bill
+            </li>
+            <li
+              onClick={() => setActiveSplitBillStep("summary")}
+              className={`step cursor-pointer transition ${
+                activeSplitBillStep === "summary" && "step-primary"
+              }`}
+            >
+              Summary
+            </li>
+          </ul>
+          {children}
+        </main>
+      </div>
     </>
   );
 };

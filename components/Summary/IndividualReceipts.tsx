@@ -42,11 +42,11 @@ const IndividualReceipts = () => {
   }, [ref]);
 
   return (
-    <div className="card bg-base-100 overflow-hidden">
+    <div className="card bg-base-100 card-compact ms:card-normal overflow-hidden">
       <div ref={ref} className="card-body bg-base-100">
         {isPrinting && (
           <>
-            <div className="divider mt-0">
+            <div className="divider mt-3 ms:mt-0">
               <div className="flex flex-col">
                 <div className="avatar">
                   <div className="mask mask-squircle">
@@ -64,11 +64,11 @@ const IndividualReceipts = () => {
           </>
         )}
         <div className="card-title">
-          <IoReceipt className="w-5 h-5" />{" "}
-          {isPrinting ? `${activePerson?.name}&apos;s` : "Individual"} Receipt{!isPrinting && "s"}
+          <IoReceipt className="w-5 h-5" /> {isPrinting ? `${activePerson?.name}'s` : "Individual"}{" "}
+          Receipt{!isPrinting && "s"}
         </div>
         {!isPrinting && people.length > 0 && (
-          <div className="tabs tabs-boxed mt-4">
+          <div className="tabs tabs-boxed mt-1  ms:mt-4">
             {people.map((person) => (
               <div
                 className={`tab tab-lifted ${activeTab == person.uid && "tab-active"}`}
@@ -81,14 +81,19 @@ const IndividualReceipts = () => {
           </div>
         )}
         <ReceiptTable activeTab={activeTab ?? ""} />
-        <div className={`card-actions self-end ${isPrinting && "hidden"}`}>
-          <button onClick={saveImage} className="btn gap-2 btn-primary">
-            <HiShare className="w-5 h-5" /> Share {activePerson?.name}&apos;s Bill
+        <div
+          className={`card-actions flex-col items-stretch sm:items-start sm:self-end ${
+            isPrinting && "hidden"
+          }`}
+        >
+          <button onClick={saveImage} className="btn h-auto gap-2 btn-primary">
+            <HiShare className="w-5 h-5" /> Share{" "}
+            {(activePerson?.name.length ?? 0) < 12 && `${activePerson?.name}'s`} Bill
           </button>
         </div>
         {isPrinting && (
-          <p className="text-center text-sm font-mono text-gray-300 dark:text-gray-600">
-            Generated with Tiramisu Split Bill by Lyth
+          <p className="text-center text-xs ms:text-sm font-mono text-gray-300 dark:text-gray-600">
+            Generated with <br className="inline xs:hidden" /> Tiramisu Split Bill by Lyth
           </p>
         )}
       </div>

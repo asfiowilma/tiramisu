@@ -19,10 +19,10 @@ const PeopleTab = () => {
 
   return (
     <>
-      <div className="bg-base-100 my-6 card">
+      <div className="bg-base-100 mt-6 mb-4 xs:my-6 card card-compact xs:card-normal">
         <AddPersonForm />
       </div>
-      <div className="card bg-base-100 mb-16">
+      <div className="card bg-base-100 card-compact xs:card-normal mb-14 sm:mb-6">
         <div className="card-body">
           <div className="card-title justify-between">
             <div className="card-title">

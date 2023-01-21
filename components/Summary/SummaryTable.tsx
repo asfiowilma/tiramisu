@@ -19,7 +19,7 @@ const SummaryTable = () => {
       <tbody>
         {people.map((person) => (
           <tr key={person.uid}>
-            <td>
+            <td className="whitespace-normal break-all">
               <div className="flex items-center gap-3">
                 <div className="avatar">
                   <div className="mask mask-squircle">
@@ -32,7 +32,7 @@ const SummaryTable = () => {
                     />
                   </div>
                 </div>
-                <div>{person.name}</div>
+                <div className="max-w-[12ch] sm:max-w-max">{person.name}</div>
               </div>
             </td>
             <td className="flex justify-between">

@@ -13,7 +13,7 @@ const PriceInput = ({ register }: BillInputProps) => {
         <input
           type="number"
           min={0}
-          className="input input-bordered flex-1"
+          className="input input-bordered w-full flex-1"
           placeholder="How much was it?"
           required
           {...register("price", { required: true, valueAsNumber: true })}

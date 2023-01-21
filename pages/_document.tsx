@@ -1,5 +1,4 @@
 import { Html, Head, Main, NextScript } from "next/document";
-import Script from "next/script";
 
 export default function Document() {
   return (
@@ -200,12 +199,6 @@ export default function Document() {
       <body>
         <Main />
         <NextScript />
-        <Script
-          async
-          defer
-          data-website-id="e565587e-a671-4caa-9f18-8bf12805d472"
-          src="https://melanippe-umami.vercel.app/umami.js"
-        ></Script>
       </body>
     </Html>
   );

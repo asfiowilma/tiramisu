@@ -64,8 +64,8 @@ const IndividualReceipts = () => {
           </>
         )}
         <div className="card-title">
-          <IoReceipt className="w-5 h-5" /> {isPrinting ? `${activePerson?.name}'s` : "Individual"}{" "}
-          Receipt{!isPrinting && "s"}
+          <IoReceipt className="w-5 h-5" />{" "}
+          {isPrinting ? `${activePerson?.name}&apos;s` : "Individual"} Receipt{!isPrinting && "s"}
         </div>
         {!isPrinting && people.length > 0 && (
           <div className="tabs tabs-boxed mt-4">
@@ -83,7 +83,7 @@ const IndividualReceipts = () => {
         <ReceiptTable activeTab={activeTab ?? ""} />
         <div className={`card-actions self-end ${isPrinting && "hidden"}`}>
           <button onClick={saveImage} className="btn gap-2 btn-primary">
-            <HiShare className="w-5 h-5" /> Share {activePerson?.name}'s Bill
+            <HiShare className="w-5 h-5" /> Share {activePerson?.name}&apos;s Bill
           </button>
         </div>
         {isPrinting && (

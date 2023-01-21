@@ -6,7 +6,7 @@ const PayerSelect = ({ register, clearPayerSelection, selectEveryone }: PayerSel
   const { people } = usePeopleStore();
   return (
     <>
-      <div className="divider text-lg my-6">Who's paying for this?</div>
+      <div className="divider text-lg my-6">Who&apos;s paying for this?</div>
       <div className="btn-group w-full mb-4">
         <button onClick={clearPayerSelection} type="button" className="btn flex-1">
           Clear Selection

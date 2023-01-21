@@ -45,7 +45,7 @@ const EveryonesBill = ({ resetEverything }: EveryonesBillProps) => {
     <div className="bg-base-100 my-6 card overflow-hidden">
       <div className="card-body bg-base-100" ref={ref}>
         <div className="card-title w-full">
-          <IoReceipt className="w-5 h-5" /> Everyone's Bill
+          <IoReceipt className="w-5 h-5" /> Everyone&apos;s Bill
           {isPrinting && (
             <span className="flex-1 text-right text-gray-300 dark:text-gray-500">
               {new Date().toLocaleDateString()}

@@ -58,10 +58,16 @@ const EveryonesBill = ({ resetEverything }: EveryonesBillProps) => {
             isPrinting && "hidden"
           }`}
         >
-          <button onClick={resetEverything} className="btn btn-outline btn-error gap-2">
+          <button
+            onClick={resetEverything}
+            className="btn btn-outline btn-error gap-2 umami--click--reset-everything"
+          >
             <FaTrashAlt /> Reset Everything
           </button>
-          <button onClick={saveImage} className="btn gap-2 btn-primary">
+          <button
+            onClick={saveImage}
+            className="btn gap-2 btn-primary umami--click--share-everyone's-bill"
+          >
             <HiShare className="w-5 h-5" /> Share Bill
           </button>
         </div>

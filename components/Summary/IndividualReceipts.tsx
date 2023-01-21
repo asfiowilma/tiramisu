@@ -86,7 +86,10 @@ const IndividualReceipts = () => {
             isPrinting && "hidden"
           }`}
         >
-          <button onClick={saveImage} className="btn h-auto gap-2 btn-primary">
+          <button
+            onClick={saveImage}
+            className="btn h-auto gap-2 btn-primary umami--click--share-individual-bill"
+          >
             <HiShare className="w-5 h-5" /> Share{" "}
             {(activePerson?.name.length ?? 0) < 12 && `${activePerson?.name}'s`} Bill
           </button>

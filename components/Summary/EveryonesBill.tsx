@@ -66,7 +66,7 @@ const EveryonesBill = ({ resetEverything }: EveryonesBillProps) => {
           </button>
           <button
             onClick={saveImage}
-            className="btn gap-2 btn-primary umami--click--share-everyone's-bill"
+            className="btn gap-2 btn-primary umami--click--share-everyones-bill"
           >
             <HiShare className="w-5 h-5" /> Share Bill
           </button>

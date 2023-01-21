@@ -41,7 +41,7 @@ const PeopleTab = () => {
               <Person key={person.uid} name={person.name} uid={person.uid} />
             ))}
             {people.length == 0 && (
-              <div className="alert text-center">
+              <div className="alert justify-center text-center">
                 <div>
                   Nobody registered yet.
                   <br /> Add a new person above.

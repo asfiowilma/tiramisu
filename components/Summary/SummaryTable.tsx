@@ -43,6 +43,15 @@ const SummaryTable = () => {
             </td>
           </tr>
         ))}
+        {people.length == 0 && (
+          <tr>
+            <td colSpan={2}>
+              <div className="card-body justify-center text-center">
+                <span>Nobody registered yet.</span>
+              </div>
+            </td>
+          </tr>
+        )}
       </tbody>
       <tfoot>
         <tr>

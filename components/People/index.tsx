@@ -44,7 +44,7 @@ const PeopleTab = () => {
               <div className="alert justify-center text-center">
                 <div>
                   Nobody registered yet.
-                  <br /> Add a new person above.
+                  <br /> Add at least two people to continue~
                 </div>
               </div>
             )}

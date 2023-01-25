@@ -6,7 +6,13 @@ import { useBillStore } from "./useBillStore";
 const useBillForm = () => {
   const { bill, activeBill } = useBillStore();
   const { people } = usePeopleStore();
-  const { register, handleSubmit, setValue, reset } = useForm();
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    reset,
+    formState: { errors },
+  } = useForm();
 
   useEffect(() => {
     if (activeBill) {
@@ -32,7 +38,7 @@ const useBillForm = () => {
     setValue("payers", []);
   };
 
-  return { register, reset, handleSubmit, setValue, clearPayerSelection, selectEveryone };
+  return { register, reset, errors, handleSubmit, setValue, clearPayerSelection, selectEveryone };
 };
 
 export default useBillForm;

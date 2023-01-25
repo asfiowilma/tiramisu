@@ -21,7 +21,8 @@ interface BillFormProps {
 const BillForm = ({ isModalOpen, setIsModalOpen }: BillFormProps) => {
   const [isTaxModalOpen, setIsTaxModalOpen] = useState(false);
   const { activeBill, setActiveBill, addBillItem, editBillItem } = useBillStore();
-  const { register, handleSubmit, clearPayerSelection, selectEveryone, reset } = useBillForm();
+  const { register, handleSubmit, clearPayerSelection, selectEveryone, reset, errors } =
+    useBillForm();
 
   useEffect(() => {
     if (!activeBill) reset();
@@ -64,6 +65,11 @@ const BillForm = ({ isModalOpen, setIsModalOpen }: BillFormProps) => {
               clearPayerSelection={clearPayerSelection}
               selectEveryone={selectEveryone}
             />
+            {errors.payers && (
+              <div className="alert alert-warning mt-4 text-center">
+                Honey, somebody's gotta to pay for this.
+              </div>
+            )}
             <div className="modal-action">
               <button type="button" onClick={closeModal} className="btn btn-ghost">
                 cancel

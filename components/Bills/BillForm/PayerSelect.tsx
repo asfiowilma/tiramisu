@@ -29,7 +29,7 @@ const PayerSelect = ({ register, clearPayerSelection, selectEveryone }: PayerSel
                 type="checkbox"
                 className="checkbox checkbox-secondary"
                 value={person.uid}
-                {...register("payers")}
+                {...register("payers", { required: true })}
               />
             </label>
           ))}

@@ -14,7 +14,7 @@ type TaxModalProps = {
 
 const TaxModal = ({ isInvoice, isTaxModalOpen, setIsTaxModalOpen }: TaxModalProps) => {
   const { register, handleSubmit, reset } = useForm();
-  const { addTaxRate } = isInvoice ? useInvoiceStore() : useBillStore();
+  const { addTaxRate } = useBillStore();
 
   const addNewRate = (data: FieldValues) => {
     const uid = uuid();

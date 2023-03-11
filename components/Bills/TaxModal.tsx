@@ -4,15 +4,17 @@ import { useForm } from "react-hook-form";
 import { FieldValues } from "react-hook-form/dist/types";
 import { useBillStore } from "@/services/hooks/useBillStore";
 import { v4 as uuid } from "uuid";
+import { useInvoiceStore } from "@/services/hooks/useInvoiceStore";
 
 type TaxModalProps = {
+  isInvoice?: boolean;
   isTaxModalOpen: boolean;
   setIsTaxModalOpen: (to: boolean) => void;
 };
 
-const TaxModal = ({ isTaxModalOpen, setIsTaxModalOpen }: TaxModalProps) => {
+const TaxModal = ({ isInvoice, isTaxModalOpen, setIsTaxModalOpen }: TaxModalProps) => {
   const { register, handleSubmit, reset } = useForm();
-  const { addTaxRate } = useBillStore();
+  const { addTaxRate } = isInvoice ? useInvoiceStore() : useBillStore();
 
   const addNewRate = (data: FieldValues) => {
     const uid = uuid();
@@ -55,6 +57,7 @@ const TaxModal = ({ isTaxModalOpen, setIsTaxModalOpen }: TaxModalProps) => {
             <div className="input-group">
               <input
                 type="number"
+                step={0.05}
                 className="input input-bordered flex-1"
                 placeholder="How much is the tax rate?"
                 required

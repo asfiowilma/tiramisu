@@ -8,7 +8,7 @@ export default function Document() {
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="Tiramisu" />
-        <meta name="description" content="Tiramisu Split Bill and Receipt Maker" />
+        <meta name="description" content="Tiramisu Split Bill and Invoice Maker" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="msapplication-config" content="/icons/browserconfig.xml" />
@@ -176,10 +176,10 @@ export default function Document() {
 
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:url" content="https://yourdomain.com" />
-        <meta name="twitter:title" content="Tiramisu | Split Bill and Receipt Maker" />
+        <meta name="twitter:title" content="Tiramisu | Split Bill and Invoice Maker" />
         <meta
           name="twitter:description"
-          content="No hassle split-bill app, also serves as an invoice/receipt maker~"
+          content="No hassle split-bill app, also serves as an invoice/invoice maker~"
         />
         <meta
           name="twitter:image"
@@ -190,9 +190,9 @@ export default function Document() {
         <meta property="og:title" content="Tiramisu" />
         <meta
           property="og:description"
-          content="No hassle split-bill app, also serves as an invoice/receipt maker~"
+          content="No hassle split-bill app, also serves as an invoice/invoice maker~"
         />
-        <meta property="og:site_name" content="Tiramisu | Split Bill and Receipt Maker" />
+        <meta property="og:site_name" content="Tiramisu | Split Bill and Invoice Maker" />
         <meta property="og:url" content="https://yourdomain.com" />
         <meta property="og:image" content="https://yourdomain.com/icons/apple-touch-icon.png" />
       </Head>

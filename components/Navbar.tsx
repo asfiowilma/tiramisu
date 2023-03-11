@@ -27,7 +27,7 @@ const Navbar = () => {
               <Link href={"/"}>Split Bill</Link>
             </li>
             <li>
-              <Link href={"/receipt"}>Receipt Maker</Link>
+              <Link href={"/invoice"}>Invoice Maker</Link>
             </li>
           </ul>
         </div>
@@ -42,10 +42,10 @@ const Navbar = () => {
             Split Bill
           </Link>
           <Link
-            href={"/receipt"}
-            className={`tab transition ${activeApp == "receipt-maker" && "tab-active"}`}
+            href={"/invoice"}
+            className={`tab transition ${activeApp == "invoice-maker" && "tab-active"}`}
           >
-            Receipt Maker
+            Invoice Maker
           </Link>
         </div>
         <div className="flex-1 flex justify-end">

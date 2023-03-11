@@ -5,41 +5,17 @@ import { IoReceipt } from "react-icons/io5";
 import { toBlob } from "html-to-image";
 import ReceiptTable from "./ReceiptTable";
 import Avatar from "boring-avatars";
+import usePrint from "@/services/hooks/usePrint";
 
 const IndividualReceipts = () => {
   const { people } = usePeopleStore();
-  const ref = useRef<HTMLDivElement>(null);
   const [activeTab, setActiveTab] = useState(people.at(0)?.uid);
-  const [isPrinting, setIsPrinting] = useState(false);
   const [activePerson, setActivePerson] = useState<Person>();
+  const { ref, saveImage, isPrinting } = usePrint();
 
   useEffect(() => {
     if (activeTab) setActivePerson(people.find((p) => p.uid == activeTab));
   }, [activeTab]);
-
-  const saveImage = useCallback(() => {
-    if (ref.current === null) return;
-
-    setIsPrinting(true);
-    toBlob(ref.current, { cacheBust: true })
-      .then((fileData) => {
-        const title = `tiramisu-splitbill-${activePerson?.name}-${Date.now()}.png`;
-        const data = {
-          files: [
-            new File([fileData as Blob], title, {
-              type: (fileData as Blob).type,
-            }),
-          ],
-          title: title,
-          text: title,
-        };
-        navigator.share(data);
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-      .finally(() => setIsPrinting(false));
-  }, [ref]);
 
   return (
     <div className="card bg-base-100 card-compact ms:card-normal overflow-hidden">
@@ -87,7 +63,7 @@ const IndividualReceipts = () => {
           }`}
         >
           <button
-            onClick={saveImage}
+            onClick={() => saveImage(`splitbill-${activePerson?.name}`)}
             className="btn h-auto gap-2 btn-primary umami--click--share-individual-bill"
           >
             <HiShare className="w-5 h-5" /> Share{" "}

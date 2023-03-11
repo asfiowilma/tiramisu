@@ -4,6 +4,7 @@ interface BillInputProps {
 
 interface TaxInputProps extends BillInputProps {
   setIsTaxModalOpen: (to: boolean) => void;
+  isInvoice?: boolean;
 }
 
 interface PayerSelectProps extends BillInputProps {

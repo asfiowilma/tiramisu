@@ -1,9 +1,14 @@
 import { useBillStore } from "@/services/hooks/useBillStore";
+import { useInvoiceStore } from "@/services/hooks/useInvoiceStore";
 import React from "react";
 import { FaPlus } from "react-icons/fa";
 
-const TaxSelect = ({ register, setIsTaxModalOpen }: TaxInputProps) => {
-  const { taxes } = useBillStore();
+const TaxSelect = ({ register, setIsTaxModalOpen, isInvoice }: TaxInputProps) => {
+  const { taxes: billTaxes } = useBillStore();
+  const { taxes: invoiceTaxes } = useInvoiceStore();
+
+  const taxes = isInvoice ? invoiceTaxes : billTaxes;
+
   return (
     <>
       <div className="form-control">

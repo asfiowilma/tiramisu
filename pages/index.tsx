@@ -14,7 +14,7 @@ export default function Home() {
       <Head>
         <meta
           name="description"
-          content="A browser-based app for splitting bills and generating beautiful receipts/invoices."
+          content="A browser-based app for splitting bills and generating beautiful invoices."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />

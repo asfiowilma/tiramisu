@@ -8,38 +8,14 @@ import { toBlob } from "html-to-image";
 import { HiShare } from "react-icons/hi";
 import { FaTrashAlt } from "react-icons/fa";
 import SummaryTable from "./SummaryTable";
+import usePrint from "@/services/hooks/usePrint";
 
 interface EveryonesBillProps {
   resetEverything: () => void;
 }
 
 const EveryonesBill = ({ resetEverything }: EveryonesBillProps) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const [isPrinting, setIsPrinting] = useState(false);
-
-  const saveImage = useCallback(() => {
-    if (ref.current === null) return;
-
-    setIsPrinting(true);
-    toBlob(ref.current, { cacheBust: true })
-      .then((fileData) => {
-        const title = `tiramisu-splitbill-everyone-${Date.now()}.png`;
-        const data = {
-          files: [
-            new File([fileData as Blob], title, {
-              type: (fileData as Blob).type,
-            }),
-          ],
-          title: title,
-          text: title,
-        };
-        navigator.share(data);
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-      .finally(() => setIsPrinting(false));
-  }, [ref]);
+  const { ref, isPrinting, saveImage } = usePrint();
 
   return (
     <div className="bg-base-100 mt-6 mb-4 xs:my-6 card card-compact ms:card-normal overflow-hidden">
@@ -65,7 +41,7 @@ const EveryonesBill = ({ resetEverything }: EveryonesBillProps) => {
             <FaTrashAlt /> Reset Everything
           </button>
           <button
-            onClick={saveImage}
+            onClick={() => saveImage("splitbill-everyone")}
             className="btn gap-2 btn-primary umami--click--share-everyones-bill"
           >
             <HiShare className="w-5 h-5" /> Share Bill

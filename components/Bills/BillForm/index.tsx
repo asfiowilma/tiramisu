@@ -67,7 +67,7 @@ const BillForm = ({ isModalOpen, setIsModalOpen }: BillFormProps) => {
             />
             {errors.payers && (
               <div className="alert alert-warning mt-4 text-center">
-                Honey, somebody's gotta to pay for this.
+                Honey, somebody&apos;s gotta to pay for this.
               </div>
             )}
             <div className="modal-action">

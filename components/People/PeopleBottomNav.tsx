@@ -23,7 +23,7 @@ const PeopleBottomNav = () => {
           people.length == 0
             ? "Add at least 2 people to continue"
             : people.length == 1
-            ? "Consider using receipt maker if there's only one person"
+            ? "Consider using invoice maker if there's only one person"
             : undefined
         }
       >

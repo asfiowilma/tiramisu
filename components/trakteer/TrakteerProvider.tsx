@@ -1,12 +1,12 @@
-import { createContext, useContext, useRef, useState } from 'react'
-import { TrakteerContextValue, TrakteerProviderProps } from './types'
+import { createContext, useContext, useRef, useState } from "react";
+import { TrakteerContextValue, TrakteerProviderProps } from "./types";
 
-const TrakteerContext = createContext<TrakteerContextValue | undefined>(undefined)
+const TrakteerContext = createContext<TrakteerContextValue | undefined>(undefined);
 
 const TrakteerProvider = ({ children }: TrakteerProviderProps) => {
-  const trakteerRef = useRef<HTMLIFrameElement>(null)
-  const [isTrakteerOpen, setIsTrakteerOpen] = useState<boolean>(false)
-  const [isLoading, setIsLoading] = useState(false)
+  const trakteerRef = useRef<HTMLIFrameElement>(null!);
+  const [isTrakteerOpen, setIsTrakteerOpen] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   return (
     <TrakteerContext.Provider
@@ -14,15 +14,15 @@ const TrakteerProvider = ({ children }: TrakteerProviderProps) => {
     >
       {children}
     </TrakteerContext.Provider>
-  )
-}
+  );
+};
 
 function useTrakteer() {
-  const context = useContext(TrakteerContext)
+  const context = useContext(TrakteerContext);
   if (context === undefined) {
-    throw new Error('useTrakteer must be used within a TrakteerProvider')
+    throw new Error("useTrakteer must be used within a TrakteerProvider");
   }
-  return context
+  return context;
 }
 
-export { useTrakteer, TrakteerProvider }
+export { useTrakteer, TrakteerProvider };

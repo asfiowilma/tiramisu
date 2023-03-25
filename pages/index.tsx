@@ -4,7 +4,6 @@ import { useNavigationStore } from "@/services/hooks/useNavigationStore";
 import PeopleTab from "@/components/People";
 import BillTab from "@/components/Bills";
 import SummaryTab from "@/components/Summary";
-import { useEffect } from "react";
 
 export default function Home() {
   const { activeSplitBillStep } = useNavigationStore();

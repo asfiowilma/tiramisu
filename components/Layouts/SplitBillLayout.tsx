@@ -2,8 +2,12 @@ import React, { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Head from "next/head";
 import { useNavigationStore } from "@/services/hooks/useNavigationStore";
+import { useSearchParams } from "next/navigation";
 
 const SplitBillLayout = ({ children }: LayoutProps) => {
+  const searchParams = useSearchParams();
+  const hideNavbar = searchParams.get("hidenavbar");
+
   const { activeApp, activeSplitBillStep, setActiveSplitBillStep, setActiveApp } =
     useNavigationStore();
 
@@ -17,8 +21,12 @@ const SplitBillLayout = ({ children }: LayoutProps) => {
         <title>Tiramisu | Split Bill</title>
       </Head>
       <div className="min-h-screen flex flex-col  items-center bg-base-200 ">
-        <Navbar />
-        <main className="flex-1 px-2 py-6 ms:p-4 ms:pt-6 sm:p-6 max-w-screen-sm w-full">
+        {!hideNavbar && <Navbar />}
+        <main
+          className={`flex-1 px-2 py-6 ms:p-4 ms:pt-6 sm:p-6 max-w-screen-sm w-full ${
+            hideNavbar ? "pt-10" : ""
+          }`}
+        >
           <ul className="steps w-full">
             <li
               onClick={() => setActiveSplitBillStep("people")}

@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-type TiramisuApp = "split-bill" | "invoice-maker";
+type TiramisuApp = "split-bill" | "invoice-maker" | "";
 type SplitBillStep = "people" | "bill" | "summary";
 
 interface NavigationState {

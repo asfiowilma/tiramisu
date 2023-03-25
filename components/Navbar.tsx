@@ -5,7 +5,13 @@ import { FaRegMoon, FaSun } from "react-icons/fa";
 import { GiCakeSlice } from "react-icons/gi";
 import { themeChange } from "theme-change";
 
-const Navbar = () => {
+interface NavbarProps {
+  isTransparent?: boolean;
+  isAppWidth?: boolean;
+  isFixed?: boolean;
+}
+
+const Navbar = ({ isTransparent, isFixed, isAppWidth = true }: NavbarProps) => {
   const { activeApp } = useNavigationStore();
   useEffect(() => {
     themeChange(false);
@@ -13,12 +19,18 @@ const Navbar = () => {
   }, []);
 
   return (
-    <header className="navbar bg-base-100">
-      <div className="max-w-screen-sm mx-auto w-full">
+    <header
+      className={`navbar ${isFixed ? "fixed top-0 z-10" : ""} ${
+        isTransparent ? "bg-transparent text-primary-content" : "bg-base-100"
+      }`}
+    >
+      <div className={`${isAppWidth ? "max-w-screen-sm" : "p-4"} mx-auto w-full`}>
         <div className="ms:hidden dropdown dropdown-bottom">
-          <div tabIndex={0} className="btn btn-ghost pl-2 gap-2">
-            <GiCakeSlice className="w-8 h-8" /> <span>Tiramisu</span>
-          </div>
+          <Link href={"/home"}>
+            <div tabIndex={0} className="btn btn-ghost pl-2 gap-2">
+              <GiCakeSlice className="w-8 h-8" /> <span>Tiramisu</span>
+            </div>
+          </Link>
           <ul
             tabIndex={0}
             className="dropdown-content menu p-2 shadow bg-base-300 rounded-box w-52"
@@ -31,23 +43,36 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <div className="hidden ms:inline-flex btn btn-ghost pl-2 gap-2">
-          <GiCakeSlice className="w-8 h-8" /> <span>Tiramisu</span>
-        </div>
-        <div className="hidden ms:flex tabs tabs-boxed">
-          <Link
-            href={"/"}
-            className={`tab transition ${activeApp == "split-bill" && "tab-active"}`}
-          >
-            Split Bill
-          </Link>
-          <Link
-            href={"/invoice"}
-            className={`tab transition ${activeApp == "invoice-maker" && "tab-active"}`}
-          >
-            Invoice Maker
-          </Link>
-        </div>
+        <Link href={"/home"}>
+          <div className="hidden ms:inline-flex btn btn-ghost pl-2 gap-2">
+            <GiCakeSlice className="w-8 h-8" /> <span>Tiramisu</span>
+          </div>
+        </Link>
+        {activeApp != "" ? (
+          <div className="hidden ms:flex tabs tabs-boxed">
+            <Link
+              href={"/"}
+              className={`tab transition ${activeApp == "split-bill" && "tab-active"}`}
+            >
+              Split Bill
+            </Link>
+            <Link
+              href={"/invoice"}
+              className={`tab transition ${activeApp == "invoice-maker" && "tab-active"}`}
+            >
+              Invoice Maker
+            </Link>
+          </div>
+        ) : (
+          <div className="btn-group gap-1">
+            <Link href={"/"} className="btn btn-sm glass text-primary-content">
+              Split bill
+            </Link>
+            <Link href={"/invoice"} className="btn btn-sm glass text-primary-content">
+              Invoice maker
+            </Link>
+          </div>
+        )}
         <div className="flex-1 flex justify-end">
           <button
             className=" btn btn-square btn-ghost swap swap-rotate "

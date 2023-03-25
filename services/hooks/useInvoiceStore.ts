@@ -25,6 +25,8 @@ interface InvoiceState {
   getSubtotal: () => number;
   getTaxTotal: () => number;
   getTotal: () => number;
+  invoiceTerms: string;
+  setInvoiceTerms: (to: string) => void;
 }
 
 export const useInvoiceStore = create<InvoiceState>()(
@@ -37,6 +39,8 @@ export const useInvoiceStore = create<InvoiceState>()(
       isSenderHidden: false,
       isRecipientHidden: false,
       activeInvoice: "",
+      invoiceTerms: "",
+      setInvoiceTerms: (to) => set({ invoiceTerms: to }),
       setActiveInvoice: (to) => set({ activeInvoice: to }),
       addInvoiceItem: (item) => set({ invoiceItems: [...get().invoiceItems, item] }),
       editInvoiceItem: (uid, item) =>

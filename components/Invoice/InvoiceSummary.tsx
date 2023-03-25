@@ -6,7 +6,7 @@ const InvoiceSummary = () => {
   const { getSubtotal, getTaxTotal, getTotal } = useInvoiceStore();
 
   return (
-    <div className="card card-compact sm:card-normal bg-base-100 mb-14 sm:mb-6">
+    <div className="card card-compact sm:card-normal bg-base-100">
       <div className="card-body">
         <table className="table table-compact">
           <tbody>

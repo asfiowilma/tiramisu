@@ -32,7 +32,7 @@ const InvoiceRow = ({
       <td className="whitespace-normal flex flex-col">
         <div className="font-medium text-black dark:text-white">{name}</div>
         {desc && <p className="text-slate-400 max-w-[20ch] sm:max-w-max">{desc}</p>}
-        {taxUid != untaxed.uid && (
+        {taxUid != untaxed.uid && (tax?.rate ?? 0) > 0 && (
           <p>
             Tax: {tax?.name} ({tax?.rate}%)
           </p>

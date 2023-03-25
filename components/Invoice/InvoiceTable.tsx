@@ -24,8 +24,8 @@ const InvoiceTable = ({ isPrinting }: Printable) => {
   };
 
   return (
-    <div>
-      <div className="card compact bg-base-100 mt-6 mb-4 sm:mb-6">
+    <>
+      <div className="card compact bg-base-100">
         <div className="card-body">
           <div className="flex py-1 pl-4 justify-between">
             <div className="card-title">
@@ -99,7 +99,7 @@ const InvoiceTable = ({ isPrinting }: Printable) => {
         isDialogOpen={isDialogOpen}
         setIsDialogOpen={setIsDialogOpen}
       />
-    </div>
+    </>
   );
 };
 

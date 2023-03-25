@@ -4,18 +4,41 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { HiPencil } from "react-icons/hi";
 import InvoicePersonForm from "./InvoicePersonForm";
 
-const RecipientInfo = ({ isPrinting }: Printable) => {
+export enum Stakeholder {
+  sender,
+  recipient,
+}
+
+interface StakeholderInfoProps extends Printable {
+  type: Stakeholder;
+}
+
+const StakeholderInfo = ({ type, isPrinting }: StakeholderInfoProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const {
     recipientInfo,
-    isRecipientHidden: isHidden,
-    setIsRecipientHidden: setIsHidden,
+    isRecipientHidden,
+    setIsRecipientHidden,
+    senderInfo,
+    isSenderHidden,
+    setIsSenderHidden,
   } = useInvoiceStore();
+  const isRecipient = type == Stakeholder.recipient;
+
+  const data = isRecipient ? recipientInfo : senderInfo;
+  const isHidden = isRecipient ? isRecipientHidden : isSenderHidden;
+  const setIsHidden = isRecipient ? setIsRecipientHidden : setIsSenderHidden;
 
   return (
     <>
       <div
         className={`card card-compact transition box-border border-2 ${
+          !(isRecipientHidden || isSenderHidden) || !isPrinting
+            ? isRecipient
+              ? "rounded-l-none"
+              : "rounded-r-none"
+            : "rounded-box"
+        } sm:rounded-box ${
           isHidden
             ? "bg-transparent  border-base-content border-dashed opacity-75"
             : "bg-base-100 border-base-100"
@@ -23,18 +46,18 @@ const RecipientInfo = ({ isPrinting }: Printable) => {
       >
         <div className="card-body ">
           <div className="text-xs items-center uppercase font-medium flex justify-between">
-            <span>To</span>
-            <div>
+            <span>{isRecipient ? "To" : "From"}</span>
+            <div className={isPrinting ? "hidden" : ""}>
               <button
                 onClick={() => setIsModalOpen(true)}
-                title="Edit recipient info"
+                title={`Edit ${isRecipient ? "recipient" : "sender"} info`}
                 className="btn btn-sm btn-ghost btn-square"
               >
                 <HiPencil className="w-5 h-5" />
               </button>
               <button
                 onClick={() => setIsHidden(!isHidden)}
-                title="Hide recipient info"
+                title={`Hide ${isRecipient ? "recipient" : "sender"} info`}
                 className={`swap btn btn-sm btn-ghost btn-square ${isHidden ? "" : "swap-active"}`}
               >
                 <FaEye className="swap-on w-5 h-5" />
@@ -43,19 +66,22 @@ const RecipientInfo = ({ isPrinting }: Printable) => {
             </div>
           </div>
           <div className="flex-flex-col">
-            <div className="font-bold">{recipientInfo?.entityName || "Company/Recipient Name"}</div>
-            {recipientInfo?.fullName && <p>{recipientInfo?.fullName}</p>}
-            {recipientInfo?.contact && <p>{recipientInfo?.contact}</p>}
+            <div className="font-bold">
+              {data?.entityName || `${isRecipient ? "Recipient" : "Sender"} Name`}
+            </div>
+            {data?.fullName && <p>{data?.fullName}</p>}
+            {data?.contact && <p>{data?.contact}</p>}
           </div>
         </div>
       </div>
       <InvoicePersonForm
         isModalOpen={isModalOpen}
         closeModal={() => setIsModalOpen(false)}
-        invoicePerson={recipientInfo}
+        isSender={type == Stakeholder.sender}
+        invoicePerson={data}
       />
     </>
   );
 };
 
-export default RecipientInfo;
+export default StakeholderInfo;

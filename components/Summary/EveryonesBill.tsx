@@ -4,6 +4,7 @@ import { HiShare } from "react-icons/hi";
 import { FaTrashAlt } from "react-icons/fa";
 import SummaryTable from "./SummaryTable";
 import usePrint from "@/services/hooks/usePrint";
+import Credits from "../Credits";
 
 interface EveryonesBillProps {
   resetEverything: () => void;
@@ -42,11 +43,7 @@ const EveryonesBill = ({ resetEverything }: EveryonesBillProps) => {
             <HiShare className="w-5 h-5" /> Share Bill
           </button>
         </div>
-        {isPrinting && (
-          <p className="text-center text-xs ms:text-sm font-mono text-gray-300 dark:text-gray-600">
-            Generated with <br className="inline xs:hidden" /> Tiramisu Split Bill by Lyth
-          </p>
-        )}
+        {isPrinting && <Credits />}
       </div>
     </div>
   );

@@ -7,6 +7,7 @@ import ReceiptTable from "./ReceiptTable";
 import Avatar from "boring-avatars";
 import usePrint from "@/services/hooks/usePrint";
 import PersonIcon from "../People/PersonIcon";
+import Credits from "../Credits";
 
 const IndividualReceipts = () => {
   const { people } = usePeopleStore();
@@ -65,11 +66,7 @@ const IndividualReceipts = () => {
             {(activePerson?.name.length ?? 0) < 12 && `${activePerson?.name}'s`} Bill
           </button>
         </div>
-        {isPrinting && (
-          <p className="text-center text-xs ms:text-sm font-mono text-gray-300 dark:text-gray-600">
-            Generated with <br className="inline xs:hidden" /> Tiramisu Split Bill by Lyth
-          </p>
-        )}
+        {isPrinting && <Credits />}
       </div>
     </div>
   );

@@ -3,13 +3,10 @@ import { v4 as uuid } from "uuid";
 import { IoReceipt } from "react-icons/io5";
 import { useInvoiceStore } from "@/services/hooks/useInvoiceStore";
 import { FieldValues } from "react-hook-form/dist/types";
-import TaxModal from "../Bills/TaxModal";
+import TaxModal from "../TaxModal";
 import useInvoiceForm from "@/services/hooks/useInvoiceForm";
-import NameInput from "../Bills/BillForm/NameInput";
-import DescriptionInput from "../Bills/BillForm/DescriptionInput";
-import QuantityInput from "../Bills/BillForm/QuantityInput";
-import PriceInput from "../Bills/BillForm/PriceInput";
-import TaxSelect from "../Bills/BillForm/TaxSelect";
+import TaxSelect from "../Form/TaxSelect";
+import InputField from "../Form/InputField";
 
 interface InvoiceFormProps {
   invoice?: InvoiceItem;
@@ -51,11 +48,36 @@ const InvoiceForm = ({ isModalOpen, setIsModalOpen }: InvoiceFormProps) => {
             <IoReceipt className="w-5 h-5" /> {activeInvoice ? "Edit" : "New"} Item
           </div>
           <form onSubmit={handleSubmit(submitItem)} className="pt-4">
-            <NameInput register={register} />
-            <DescriptionInput register={register} />
+            <InputField
+              name="name"
+              label="Item Name"
+              placeholder="What did you buy?"
+              required
+              register={register}
+            />
+            <InputField
+              type="textarea"
+              name="desc"
+              label="Description"
+              placeholder="Care to describe?"
+              register={register}
+            />
             <div className="grid grid-cols-3 gap-4">
-              <QuantityInput register={register} />
-              <PriceInput register={register} />
+              <InputField
+                name="qty"
+                label="Quantity"
+                placeholder="How many?"
+                required
+                register={register}
+              />
+              <InputField
+                name="price"
+                label="Price"
+                placeholder="How much?"
+                className="col-span-2"
+                leftAddon="Rp"
+                register={register}
+              />
             </div>
             <TaxSelect isInvoice register={register} setIsTaxModalOpen={setIsTaxModalOpen} />
             <div className="modal-action">

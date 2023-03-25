@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { lazy, Suspense, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { HiClipboard } from "react-icons/hi";
+const TextEditor = lazy(() => import("./TextEditor"));
 
 const InvoiceTerms = ({ isPrinting }: Printable) => {
   const [isHidden, setIsHidden] = useState(false);
+
   return (
     <div
       className={`card card-compact md:card-normal transition box-border border-2 ${
@@ -20,15 +22,24 @@ const InvoiceTerms = ({ isPrinting }: Printable) => {
           <button
             onClick={() => setIsHidden(!isHidden)}
             title="Hide sender info"
-            className={`swap btn btn-sm btn-ghost btn-square ${isHidden ? "" : "swap-active"}`}
+            className={`swap btn btn-sm btn-ghost btn-square ${isHidden ? "" : "swap-active"} ${
+              isPrinting ? "hidden" : ""
+            }`}
           >
             <FaEye className="swap-on w-5 h-5" />
             <FaEyeSlash className="swap-off w-5 h-5" />
           </button>
         </div>
-        <p contentEditable className="textarea textarea-bordered">
-          Insert invoice terms here
-        </p>
+        <div
+          className={`unreset prose prose-p:m-0 prose-p:pb-3 prose-headings:m-0 prose-headings:py-4 dark:prose-invert ${
+            isPrinting ? "" : "textarea textarea-bordered"
+          }`}
+          placeholder="Insert invoice terms here"
+        >
+          <Suspense fallback={<div>Loading...</div>}>
+            <TextEditor readonly={isPrinting || isHidden} />
+          </Suspense>
+        </div>
       </div>
     </div>
   );

@@ -6,6 +6,7 @@ import { toBlob } from "html-to-image";
 import ReceiptTable from "./ReceiptTable";
 import Avatar from "boring-avatars";
 import usePrint from "@/services/hooks/usePrint";
+import PersonIcon from "../People/PersonIcon";
 
 const IndividualReceipts = () => {
   const { people } = usePeopleStore();
@@ -26,13 +27,7 @@ const IndividualReceipts = () => {
               <div className="flex flex-col">
                 <div className="avatar">
                   <div className="mask mask-squircle">
-                    <Avatar
-                      size={36}
-                      name={activePerson?.uid}
-                      variant="beam"
-                      square
-                      colors={["#92A1C6", "#146A7C", "#F0AB3D", "#C271B4", "#C20D90"]}
-                    />
+                    <PersonIcon size={36} name={activePerson?.uid ?? ""} square />
                   </div>
                 </div>
               </div>

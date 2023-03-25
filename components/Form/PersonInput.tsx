@@ -5,7 +5,7 @@ import { v4 as uuid } from "uuid";
 import { usePeopleStore } from "@/services/hooks/usePeopleStore";
 import { FieldValues } from "react-hook-form/dist/types";
 
-const AddPersonForm = () => {
+const PersonInput = () => {
   const { addPerson } = usePeopleStore();
   const { register, handleSubmit, reset } = useForm();
 
@@ -44,4 +44,4 @@ const AddPersonForm = () => {
   );
 };
 
-export default AddPersonForm;
+export default PersonInput;

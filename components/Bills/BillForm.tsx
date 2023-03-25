@@ -3,14 +3,11 @@ import React, { useState, useEffect } from "react";
 import { v4 as uuid } from "uuid";
 import { IoReceipt } from "react-icons/io5";
 import TaxModal from "../TaxModal";
-import DescriptionInput from "./DescriptionInput";
-import NameInput from "./NameInput";
-import PayerSelect from "./PayerSelect";
-import PriceInput from "./PriceInput";
-import QuantityInput from "./QuantityInput";
-import TaxSelect from "./TaxSelect";
+import PayerSelect from "../Form/PayerSelect";
+import TaxSelect from "../Form/TaxSelect";
 import { useBillStore } from "@/services/hooks/useBillStore";
 import { FieldValues } from "react-hook-form/dist/types";
+import InputField from "@/components/Form/InputField";
 
 interface BillFormProps {
   bill?: BillItem;
@@ -53,11 +50,39 @@ const BillForm = ({ isModalOpen, setIsModalOpen }: BillFormProps) => {
             <IoReceipt className="w-5 h-5" /> {activeBill ? "Edit" : "New"} Item
           </div>
           <form onSubmit={handleSubmit(submitItem)} className="pt-4">
-            <NameInput register={register} />
-            <DescriptionInput register={register} />
+            <InputField
+              register={register}
+              name="name"
+              label="Item Name"
+              placeholder="What did you buy?"
+              required
+            />
+            <InputField
+              register={register}
+              type="textarea"
+              name="desc"
+              label="Description"
+              placeholder="Care to describe?"
+            />
             <div className="grid grid-cols-3 gap-4">
-              <QuantityInput register={register} />
-              <PriceInput register={register} />
+              <InputField
+                register={register}
+                type="number"
+                name="qty"
+                label="Quantity"
+                placeholder="How many?"
+                required
+              />
+              <InputField
+                register={register}
+                type="number"
+                name="price"
+                label="Price"
+                placeholder="How much was it?"
+                className="col-span-2"
+                leftAddon="Rp"
+                required
+              />
             </div>
             <TaxSelect register={register} setIsTaxModalOpen={setIsTaxModalOpen} />
             <PayerSelect

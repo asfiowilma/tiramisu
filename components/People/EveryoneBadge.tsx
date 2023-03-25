@@ -1,5 +1,5 @@
 import React from "react";
-import Avatar from "boring-avatars";
+import PersonIcon from "./PersonIcon";
 
 const EveryoneBadge = ({ people }: PeopleProps) => {
   return (
@@ -8,12 +8,7 @@ const EveryoneBadge = ({ people }: PeopleProps) => {
         <div className="avatar-group -space-x-5">
           {people.map((person) => (
             <div key={person.uid} className="avatar">
-              <Avatar
-                size={32}
-                name={person.uid}
-                variant="beam"
-                colors={["#92A1C6", "#146A7C", "#F0AB3D", "#C271B4", "#C20D90"]}
-              />
+              <PersonIcon name={person.uid} />
             </div>
           ))}
         </div>

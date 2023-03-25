@@ -1,10 +1,5 @@
-import React, { useRef, useCallback, useState } from "react";
+import React from "react";
 import { IoReceipt } from "react-icons/io5";
-import Avatar from "boring-avatars";
-import formatCurrency from "@/services/utils/formatCurrency";
-import { useBillStore } from "@/services/hooks/useBillStore";
-import { usePeopleStore } from "@/services/hooks/usePeopleStore";
-import { toBlob } from "html-to-image";
 import { HiShare } from "react-icons/hi";
 import { FaTrashAlt } from "react-icons/fa";
 import SummaryTable from "./SummaryTable";

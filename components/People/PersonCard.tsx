@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { HiPencil, HiTrash } from "react-icons/hi";
-import Avatar from "boring-avatars";
 import { usePeopleStore } from "@/services/hooks/usePeopleStore";
 import { useForm } from "react-hook-form";
 import ConfirmationDialog from "../ConfirmationDialog";
+import PersonIcon from "./PersonIcon";
 
 const Person = ({ name, uid }: PersonProps) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -25,13 +25,7 @@ const Person = ({ name, uid }: PersonProps) => {
     <>
       <div className="flex items-center gap-4 py-1.5">
         <div className="avatar mask mask-squircle">
-          <Avatar
-            size={50}
-            name={uid}
-            variant="beam"
-            square
-            colors={["#92A1C6", "#146A7C", "#F0AB3D", "#C271B4", "#C20D90"]}
-          />
+          <PersonIcon size={50} name={uid} square />
         </div>
         {!isEditing ? (
           <>

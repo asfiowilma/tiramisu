@@ -1,8 +1,8 @@
 import { useBillStore } from "@/services/hooks/useBillStore";
 import { usePeopleStore } from "@/services/hooks/usePeopleStore";
 import formatCurrency from "@/services/utils/formatCurrency";
-import Avatar from "boring-avatars";
 import React from "react";
+import PersonIcon from "../People/PersonIcon";
 
 const SummaryTable = () => {
   const { people } = usePeopleStore();
@@ -23,13 +23,7 @@ const SummaryTable = () => {
               <div className="flex items-center gap-3">
                 <div className="avatar">
                   <div className="mask mask-squircle">
-                    <Avatar
-                      size={36}
-                      name={person.uid}
-                      variant="beam"
-                      square
-                      colors={["#92A1C6", "#146A7C", "#F0AB3D", "#C271B4", "#C20D90"]}
-                    />
+                    <PersonIcon size={36} name={person.uid} square />
                   </div>
                 </div>
                 <div className="max-w-[12ch] sm:max-w-max">{person.name}</div>

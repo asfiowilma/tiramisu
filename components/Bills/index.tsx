@@ -3,14 +3,16 @@ import React, { useState } from "react";
 import { IoReceipt } from "react-icons/io5";
 import BillRow from "./BillRow";
 import BillSummary from "./BillSummary";
-import BillBottomNav from "./BillBottomNav";
 import BillForm from "./BillForm";
 import { useBillStore } from "@/services/hooks/useBillStore";
 import { FaPlus } from "react-icons/fa";
 import ConfirmationDialog from "../ConfirmationDialog";
+import BottomNav from "../BottomNav";
+import formatCurrency from "@/services/utils/formatCurrency";
+import { Step } from "../BottomNav";
 
 const BillTab = () => {
-  const { bill, setActiveBill, removeAllBillItem, removeAllTaxRates } = useBillStore();
+  const { bill, getTotal, setActiveBill, removeAllBillItem, removeAllTaxRates } = useBillStore();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
@@ -87,7 +89,16 @@ const BillTab = () => {
         </div>
       </div>
       <BillSummary />
-      <BillBottomNav />
+      <BottomNav
+        nextStep={Step.summary}
+        isNextDisabled={bill.length < 1}
+        tooltipContent={bill.length == 0 ? "Add at least 1 item to the bill" : ""}
+      >
+        <span>Total</span>
+        <span className="text-right text-lg font-medium text-accent">
+          Rp {formatCurrency(getTotal())}
+        </span>
+      </BottomNav>
       <BillForm isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
       <ConfirmationDialog
         message="Are you sure you want to remove everything?"

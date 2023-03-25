@@ -4,8 +4,8 @@ import { FaUserAlt } from "react-icons/fa";
 import Person from "@/components/People/PersonCard";
 
 import { usePeopleStore } from "@/services/hooks/usePeopleStore";
-import AddPersonForm from "./AddPersonForm";
-import PeopleBottomNav from "./PeopleBottomNav";
+import PersonInput from "../Form/PersonInput";
+import BottomNav, { Step } from "../BottomNav";
 import ConfirmationDialog from "../ConfirmationDialog";
 
 const PeopleTab = () => {
@@ -20,7 +20,7 @@ const PeopleTab = () => {
   return (
     <>
       <div className="bg-base-100 mt-6 mb-4 xs:my-6 card card-compact xs:card-normal">
-        <AddPersonForm />
+        <PersonInput />
       </div>
       <div className="card bg-base-100 card-compact xs:card-normal mb-14 sm:mb-6">
         <div className="card-body">
@@ -51,7 +51,22 @@ const PeopleTab = () => {
           </div>
         </div>
       </div>
-      <PeopleBottomNav />
+      <BottomNav
+        nextStep={Step.bill}
+        isNextDisabled={people.length < 2}
+        tooltipContent={
+          people.length == 0
+            ? "Add at least 2 people to continue"
+            : people.length == 1
+            ? "Consider using invoice maker if there's only one person"
+            : ""
+        }
+      >
+        <span>Registered</span>
+        <span className="text-right text-lg font-medium leading-tight text-accent">
+          {people.length} {people.length > 1 ? "people" : "person"}
+        </span>
+      </BottomNav>
       <ConfirmationDialog
         message="Are you sure you want to remove everyone?"
         onCancel={() => setIsDialogOpen(false)}

@@ -46,7 +46,7 @@ const Home = () => {
                     <div>Eat.</div> <div>Pay.</div> <div>Split.</div>
                   </h1>
                   <h2 className="font-bold ms:text-lg sm:text-2xl mb-3">
-                    It's app that allows you to put down a bill
+                    It&apos;s app that allows you to put down a bill
                     <br className="hidden ms:inline" /> and have your friends pay you back
                   </h2>
                   <p className="hidden lg:block">

@@ -38,7 +38,8 @@ const About = (props: Props) => {
                   <GiCakeSlice className="w-5 h-5" /> About Tiramisu
                 </div>
                 <p>
-                  It's app that allows you to put down a bill and have your friends pay you back
+                  It&apos;s app that allows you to put down a bill and have your friends pay you
+                  back
                 </p>
                 <p>
                   Tiramisu is a free app for friends to split the bill. Whether for lunch with your

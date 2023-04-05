@@ -1,14 +1,15 @@
+import { HiDownload, HiShare } from "react-icons/hi";
 import React, { useState } from "react";
+import StakeholderInfo, { Stakeholder } from "@/components/Invoice/StakeholderInfo";
+
+import ConfirmationDialog from "@/components/ConfirmationDialog";
+import Credits from "@/components/Credits";
 import Head from "next/head";
 import InvoiceMakerLayout from "@/components/Layouts/InvoiceMakerLayout";
-import StakeholderInfo, { Stakeholder } from "@/components/Invoice/StakeholderInfo";
 import InvoiceTable from "@/components/Invoice/InvoiceTable";
 import InvoiceTerms from "@/components/Invoice/InvoiceTerms";
-import usePrint from "@/services/hooks/usePrint";
-import Credits from "@/components/Credits";
-import { HiDownload, HiShare } from "react-icons/hi";
 import { useInvoiceStore } from "@/services/hooks/useInvoiceStore";
-import ConfirmationDialog from "@/components/ConfirmationDialog";
+import usePrint from "@/services/hooks/usePrint";
 
 const InvoiceMakerPage = () => {
   const { removeAllInvoiceItem, setRecipientInfo, setSenderInfo, setInvoiceTerms } =
@@ -47,7 +48,7 @@ const InvoiceMakerPage = () => {
           <InvoiceTerms isPrinting={isPrinting} />
           {isPrinting && <Credits />}
         </div>
-        <div className="flex justify-end mt-4 gap-2">
+        <div className="flex flex-col-reverse sm:flex-row justify-end mt-4 gap-2">
           <button
             onClick={() => setIsDialogOpen(true)}
             className="btn btn-outline btn-error gap-2 umami--click--reset-invoice"

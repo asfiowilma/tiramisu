@@ -1,13 +1,18 @@
 import React, { useEffect } from "react";
-import Navbar from "@/components/Navbar";
+
 import Head from "next/head";
+import Navbar from "@/components/Navbar";
+import { useBillStore } from "@/services/hooks/useBillStore";
 import { useNavigationStore } from "@/services/hooks/useNavigationStore";
+import { usePeopleStore } from "@/services/hooks/usePeopleStore";
 import { useSearchParams } from "next/navigation";
 
 const SplitBillLayout = ({ children }: LayoutProps) => {
   const searchParams = useSearchParams();
   const hideNavbar = searchParams.get("hidenavbar");
 
+  const { bill } = useBillStore();
+  const { people } = usePeopleStore();
   const { activeApp, activeSplitBillStep, setActiveSplitBillStep, setActiveApp } =
     useNavigationStore();
 
@@ -35,7 +40,7 @@ const SplitBillLayout = ({ children }: LayoutProps) => {
               People
             </li>
             <li
-              onClick={() => setActiveSplitBillStep("bill")}
+              onClick={people.length < 2 ? () => {} : () => setActiveSplitBillStep("bill")}
               className={`step cursor-pointer transition ${
                 activeSplitBillStep !== "people" && "step-primary"
               }`}
@@ -43,7 +48,11 @@ const SplitBillLayout = ({ children }: LayoutProps) => {
               Bill
             </li>
             <li
-              onClick={() => setActiveSplitBillStep("summary")}
+              onClick={
+                people.length < 2 && bill.length < 1
+                  ? () => {}
+                  : () => setActiveSplitBillStep("summary")
+              }
               className={`step cursor-pointer transition ${
                 activeSplitBillStep === "summary" && "step-primary"
               }`}

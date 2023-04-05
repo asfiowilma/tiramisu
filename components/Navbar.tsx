@@ -1,9 +1,11 @@
-import { useNavigationStore } from "@/services/hooks/useNavigationStore";
-import Link from "next/link";
-import React, { useEffect } from "react";
 import { FaRegMoon, FaSun } from "react-icons/fa";
+import React, { useEffect } from "react";
+
 import { GiCakeSlice } from "react-icons/gi";
+import Link from "next/link";
 import { themeChange } from "theme-change";
+import { useNavigationStore } from "@/services/hooks/useNavigationStore";
+import { useRouter } from "next/router";
 
 interface NavbarProps {
   isTransparent?: boolean;
@@ -12,6 +14,7 @@ interface NavbarProps {
 }
 
 const Navbar = ({ isTransparent, isFixed, isAppWidth = true }: NavbarProps) => {
+  const { pathname } = useRouter();
   const { activeApp } = useNavigationStore();
   useEffect(() => {
     themeChange(false);
@@ -20,17 +23,17 @@ const Navbar = ({ isTransparent, isFixed, isAppWidth = true }: NavbarProps) => {
 
   return (
     <header
-      className={`navbar ${isFixed ? "fixed top-0 z-10" : ""} ${
-        isTransparent ? "bg-transparent text-primary-content" : "bg-base-100"
+      className={`navbar ${isFixed ? "fixed top-0 z-50" : ""} ${
+        isTransparent
+          ? "bg-gradient-to-b from-base-100 to-transparent sm:bg-transparent sm:bg-none text-primary-content"
+          : "bg-base-100"
       }`}
     >
       <div className={`${isAppWidth ? "max-w-screen-sm" : "p-4"} mx-auto w-full`}>
-        <div className="ms:hidden dropdown dropdown-bottom">
-          <Link href={"/home"}>
-            <div tabIndex={0} className="btn btn-ghost pl-2 gap-2">
-              <GiCakeSlice className="w-8 h-8" /> <span>Tiramisu</span>
-            </div>
-          </Link>
+        <div className="sm:hidden dropdown dropdown-bottom">
+          <div tabIndex={0} className="btn btn-ghost pl-2 gap-2">
+            <GiCakeSlice className="w-8 h-8" /> <span>Tiramisu</span>
+          </div>
           <ul
             tabIndex={0}
             className="dropdown-content menu p-2 shadow bg-base-300 rounded-box w-52"
@@ -41,15 +44,35 @@ const Navbar = ({ isTransparent, isFixed, isAppWidth = true }: NavbarProps) => {
             <li>
               <Link href={"/invoice"}>Invoice Maker</Link>
             </li>
+            {activeApp != "" ? (
+              <>
+                <li></li>
+                <li>
+                  <Link href={"/home"}>Home</Link>
+                </li>
+                <li>
+                  <Link href={"/about"}>About</Link>
+                </li>
+              </>
+            ) : (
+              <>
+                <li></li>
+                <li>
+                  <Link href={pathname == "/about" ? "/home" : "/about"}>
+                    {pathname == "/about" ? "Home" : "About"}
+                  </Link>
+                </li>
+              </>
+            )}
           </ul>
         </div>
         <Link href={"/home"}>
-          <div className="hidden ms:inline-flex btn btn-ghost pl-2 gap-2">
+          <div className="hidden sm:inline-flex btn btn-ghost pl-2 gap-2">
             <GiCakeSlice className="w-8 h-8" /> <span>Tiramisu</span>
           </div>
         </Link>
         {activeApp != "" ? (
-          <div className="hidden ms:flex tabs tabs-boxed">
+          <div className="hidden sm:flex tabs tabs-boxed">
             <Link
               href={"/"}
               className={`tab transition ${activeApp == "split-bill" && "tab-active"}`}
@@ -64,7 +87,7 @@ const Navbar = ({ isTransparent, isFixed, isAppWidth = true }: NavbarProps) => {
             </Link>
           </div>
         ) : (
-          <div className="btn-group gap-1">
+          <div className="hidden sm:inline-flex btn-group gap-1">
             <Link href={"/"} className="btn btn-sm glass text-primary-content">
               Split bill
             </Link>

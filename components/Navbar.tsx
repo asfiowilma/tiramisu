@@ -25,7 +25,7 @@ const Navbar = ({ isTransparent, isFixed, isAppWidth = true }: NavbarProps) => {
     <header
       className={`navbar ${isFixed ? "fixed top-0 z-50" : ""} ${
         isTransparent
-          ? "bg-gradient-to-b from-base-100 to-transparent sm:bg-transparent sm:bg-none text-primary-content"
+          ? "bg-gradient-to-b from-neutral-focus to-transparent lg:bg-transparent lg:bg-none text-primary-content"
           : "bg-base-100"
       }`}
     >

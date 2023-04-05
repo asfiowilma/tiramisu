@@ -64,12 +64,12 @@ const About = () => {
                   <p>Thanks for checking out Tiramisu - happy bill splitting!</p>
                   <div className="divider"></div>
                   <p>If you find it helpful, consider fueling the dev&apos;s caffeine addiction~</p>
-                  <TrakteerProvider>
-                    <div className="card-actions flex-col sm:flex-row items-stretch">
+                  <div className="card-actions flex-col sm:flex-row items-stretch">
+                    <TrakteerProvider>
                       <TrakteerButton className="umami--click--trakteer-button-about" />
-                    </div>
-                    <TrakteerModal />
-                  </TrakteerProvider>
+                      <TrakteerModal />
+                    </TrakteerProvider>
+                  </div>
                 </div>
               </div>
             </div>

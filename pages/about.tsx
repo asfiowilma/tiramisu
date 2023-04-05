@@ -39,36 +39,37 @@ const About = () => {
                     <GiCakeSlice className="w-5 h-5" /> About Tiramisu
                   </div>
                   <p>
-                    Hey there! I'm the developer of Tiramisu, a free app that lets you split bills
-                    with your friends without any hassle. Tired of doing complicated math every time
-                    you go out to eat with friends? Me too! That's why I created Tiramisu.
+                    Hey there! I&apos;m the developer of Tiramisu, a free app that lets you split
+                    bills with your friends without any hassle. Tired of doing complicated math
+                    every time you go out to eat with friends? Me too! That&apos;s why I created
+                    Tiramisu.
                   </p>
 
                   <p>
-                    With Tiramisu's easy-to-use Split Bill and Invoice Maker features, you can split
-                    bills and generate receipts in just a few clicks. No need for complicated
+                    With Tiramisu&apos;s easy-to-use Split Bill and Invoice Maker features, you can
+                    split bills and generate receipts in just a few clicks. No need for complicated
                     calculations or creating accounts - just enter the names and items to pay for,
                     and let Tiramisu do the rest.
                   </p>
 
                   <p>
-                    Whether it's a casual lunch with colleagues or a fun night out with friends,
-                    Tiramisu makes it simple to keep track of expenses and split the bill. And the
-                    best part? It's completely free to use.
+                    Whether it&apos;s a casual lunch with colleagues or a fun night out with
+                    friends, Tiramisu makes it simple to keep track of expenses and split the bill.
+                    And the best part? It&apos;s completely free to use.
                   </p>
 
                   <p>
-                    I've been working with Next.js, TailwindCSS, and DaisyUI for years, and they're
-                    now my go-to frameworks for all of my personal frontend projects. And let me
-                    tell you, building Tiramisu has been an exciting journey - I've learned so much
-                    along the way!
+                    I&apos;ve been working with Next.js, TailwindCSS, and DaisyUI for years, and
+                    they&apos;re now my go-to frameworks for all of my personal frontend projects.
+                    And let me tell you, building Tiramisu has been an exciting journey - I&apos;ve
+                    learned so much along the way!
                   </p>
 
                   <p>
-                    So if you're tired of guessing who needs to pay how much or doing complicated
-                    math, give Tiramisu a try. And if you find it helpful, I'd really appreciate
-                    your support - every little bit helps me continue to improve and enhance the app
-                    for you, as well as develop more useful apps to come~
+                    So if you&apos;re tired of guessing who needs to pay how much or doing
+                    complicated math, give Tiramisu a try. And if you find it helpful, I&apos;d
+                    really appreciate your support - every little bit helps me continue to improve
+                    and enhance the app for you, as well as develop more useful apps to come~
                   </p>
 
                   <p className="mt-8">Thanks for checking out Tiramisu - happy bill splitting!</p>

@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+
+import { useBillStore } from "./useBillStore";
 import { useForm } from "react-hook-form";
 import { usePeopleStore } from "@/services/hooks/usePeopleStore";
-import { useBillStore } from "./useBillStore";
 
 const useBillForm = () => {
   const { bill, activeBill } = useBillStore();
@@ -11,6 +12,7 @@ const useBillForm = () => {
     handleSubmit,
     setValue,
     reset,
+    watch,
     formState: { errors },
   } = useForm();
 
@@ -23,6 +25,7 @@ const useBillForm = () => {
       setValue("qty", b?.qty);
       setValue("price", b?.price);
       setValue("tax", b?.tax);
+      setValue("payer", b?.payer);
       setValue("payers", b?.payers);
     } else reset();
   }, [activeBill]);
@@ -38,7 +41,16 @@ const useBillForm = () => {
     setValue("payers", []);
   };
 
-  return { register, reset, errors, handleSubmit, setValue, clearPayerSelection, selectEveryone };
+  return {
+    register,
+    watch,
+    reset,
+    errors,
+    handleSubmit,
+    setValue,
+    clearPayerSelection,
+    selectEveryone,
+  };
 };
 
 export default useBillForm;

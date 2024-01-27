@@ -1,8 +1,10 @@
+import { BiTransferAlt } from "react-icons/bi";
+import PersonIcon from "../People/PersonIcon";
+import React from "react";
+import Settlements from "./Settlements";
+import formatCurrency from "@/services/utils/formatCurrency";
 import { useBillStore } from "@/services/hooks/useBillStore";
 import { usePeopleStore } from "@/services/hooks/usePeopleStore";
-import formatCurrency from "@/services/utils/formatCurrency";
-import React from "react";
-import PersonIcon from "../People/PersonIcon";
 
 const SummaryTable = () => {
   const { people } = usePeopleStore();
@@ -19,7 +21,7 @@ const SummaryTable = () => {
       <tbody>
         {people.map((person) => (
           <tr key={person.uid}>
-            <td className="whitespace-normal break-all">
+            <td className="break-all whitespace-normal">
               <div className="flex items-center gap-3">
                 <div className="avatar">
                   <div className="mask mask-squircle">
@@ -28,19 +30,22 @@ const SummaryTable = () => {
                 </div>
                 <div className="max-w-[12ch] sm:max-w-max">{person.name}</div>
               </div>
+              <Settlements settlements={person.settlement} isSummary />
             </td>
-            <td className="flex justify-between">
-              <span>Rp</span>{" "}
-              <span className="text-lg text-accent font-medium">
-                {formatCurrency(person.due ?? 0)}
-              </span>
+            <td>
+              <div className="flex justify-between">
+                <span>Rp</span>
+                <span className="text-lg font-medium text-accent">
+                  {formatCurrency(person.due ?? 0)}
+                </span>
+              </div>
             </td>
           </tr>
         ))}
         {people.length == 0 && (
           <tr>
             <td colSpan={2}>
-              <div className="card-body justify-center text-center">
+              <div className="justify-center text-center card-body">
                 <span>Nobody registered yet.</span>
               </div>
             </td>

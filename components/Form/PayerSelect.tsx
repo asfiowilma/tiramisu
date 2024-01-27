@@ -1,41 +1,32 @@
-import PersonBadge from "@/components/People/PersonBadge";
-import { usePeopleStore } from "@/services/hooks/usePeopleStore";
+import PersonBadge from "../People/PersonBadge";
+import PersonIcon from "../People/PersonIcon";
 import React from "react";
+import { usePeopleStore } from "@/services/hooks/usePeopleStore";
 
-const PayerSelect = ({ register, clearPayerSelection, selectEveryone }: PayerSelectProps) => {
+const PayerSelect = ({ register, watch }: PayerSelectProps) => {
   const { people } = usePeopleStore();
+
   return (
-    <>
-      <div className="divider text-lg my-6">Who&apos;s paying for this?</div>
-      <div className="btn-group w-full mb-4">
-        <button onClick={clearPayerSelection} type="button" className="btn flex-1">
-          Clear Selection
-        </button>
-        <button onClick={selectEveryone} type="button" className="btn flex-1 btn-secondary">
-          Select Everyone
-        </button>
-      </div>
-      <div className="form-control">
-        <div className="grid grid-cols-1 ms:grid-cols-2 gap-x-4">
+    <div className="form-control">
+      <label className="text-sm font-medium label">Payer</label>
+      <div className="input-group">
+        <span>
+          <PersonIcon name={watch("payer")} />
+        </span>
+        <select
+          className="flex-1 w-full select select-bordered"
+          placeholder="Who paid?"
+          {...register("payer")}
+        >
+          <option value="">Who paid for this?</option>
           {people.map((person) => (
-            <label
-              key={person.uid}
-              htmlFor={`payer-${person.uid}`}
-              className="label cursor-pointer"
-            >
-              <PersonBadge name={person.name} uid={person.uid} />
-              <input
-                id={`payer-${person.uid}`}
-                type="checkbox"
-                className="checkbox checkbox-secondary"
-                value={person.uid}
-                {...register("payers", { required: true })}
-              />
-            </label>
+            <option value={person.uid} key={person.uid}>
+              {person.name}
+            </option>
           ))}
-        </div>
+        </select>
       </div>
-    </>
+    </div>
   );
 };
 

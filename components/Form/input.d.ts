@@ -17,7 +17,11 @@ interface TaxInputProps extends RegisterInput {
   isInvoice?: boolean;
 }
 
-interface PayerSelectProps extends RegisterInput {
+interface ParticipantSelectProps extends RegisterInput {
   clearPayerSelection: () => void;
   selectEveryone: () => void;
+}
+
+interface PayerSelectProps extends RegisterInput {
+  watch: UseFormWatch<BillItem>;
 }

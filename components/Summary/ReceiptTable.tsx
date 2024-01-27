@@ -1,7 +1,7 @@
-import { useBillStore } from "@/services/hooks/useBillStore";
-import formatCurrency from "@/services/utils/formatCurrency";
-import React from "react";
 import BillRow from "../Bills/BillRow";
+import React from "react";
+import formatCurrency from "@/services/utils/formatCurrency";
+import { useBillStore } from "@/services/hooks/useBillStore";
 
 type ReceiptTableProps = {
   activeTab: string;
@@ -25,7 +25,7 @@ const ReceiptTable = ({ activeTab }: ReceiptTableProps) => {
             <BillRow key={billItem.uid} isSummary {...billItem} setIsModalOpen={(_) => {}} />
           ))}
         <tr>
-          <td className="text-right uppercase font-medium">Subtotal</td>
+          <td className="font-medium text-right uppercase">Subtotal</td>
           <td>
             <div className="flex justify-between">
               <span>Rp</span>
@@ -34,7 +34,7 @@ const ReceiptTable = ({ activeTab }: ReceiptTableProps) => {
           </td>
         </tr>
         <tr>
-          <td className="text-right uppercase font-medium">Tax</td>
+          <td className="font-medium text-right uppercase">Tax</td>
           <td>
             <div className="flex justify-between">
               <span>Rp</span>
@@ -47,7 +47,7 @@ const ReceiptTable = ({ activeTab }: ReceiptTableProps) => {
         <tr>
           <td className="text-right">Total</td>
           <td>
-            <div className="flex justify-between text-accent text-lg normal-case">
+            <div className="flex justify-between text-lg normal-case text-accent">
               <span>Rp</span>
               <span>{formatCurrency(getIndividualTotal(activeTab ?? ""))}</span>
             </div>

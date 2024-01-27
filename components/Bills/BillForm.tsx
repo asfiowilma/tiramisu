@@ -1,13 +1,15 @@
-import useBillForm from "@/services/hooks/useBillForm";
-import React, { useState, useEffect } from "react";
-import { v4 as uuid } from "uuid";
-import { IoReceipt } from "react-icons/io5";
-import TaxModal from "../TaxModal";
-import PayerSelect from "../Form/PayerSelect";
-import TaxSelect from "../Form/TaxSelect";
-import { useBillStore } from "@/services/hooks/useBillStore";
+import React, { useEffect, useState } from "react";
+
 import { FieldValues } from "react-hook-form/dist/types";
 import InputField from "@/components/Form/InputField";
+import { IoReceipt } from "react-icons/io5";
+import ParticipantSelect from "../Form/ParticipantSelect";
+import PayerSelect from "../Form/PayerSelect";
+import TaxModal from "../TaxModal";
+import TaxSelect from "../Form/TaxSelect";
+import useBillForm from "@/services/hooks/useBillForm";
+import { useBillStore } from "@/services/hooks/useBillStore";
+import { v4 as uuid } from "uuid";
 
 interface BillFormProps {
   bill?: BillItem;
@@ -18,7 +20,7 @@ interface BillFormProps {
 const BillForm = ({ isModalOpen, setIsModalOpen }: BillFormProps) => {
   const [isTaxModalOpen, setIsTaxModalOpen] = useState(false);
   const { activeBill, setActiveBill, addBillItem, editBillItem } = useBillStore();
-  const { register, handleSubmit, clearPayerSelection, selectEveryone, reset, errors } =
+  const { register, watch, handleSubmit, clearPayerSelection, selectEveryone, reset, errors } =
     useBillForm();
 
   useEffect(() => {
@@ -85,14 +87,15 @@ const BillForm = ({ isModalOpen, setIsModalOpen }: BillFormProps) => {
               />
             </div>
             <TaxSelect register={register} setIsTaxModalOpen={setIsTaxModalOpen} />
-            <PayerSelect
+            <PayerSelect register={register} watch={watch} />
+            <ParticipantSelect
               register={register}
               clearPayerSelection={clearPayerSelection}
               selectEveryone={selectEveryone}
             />
             {errors.payers && (
-              <div className="alert alert-warning mt-4 text-center">
-                Honey, somebody&apos;s gotta to pay for this.
+              <div className="mt-4 text-center alert alert-warning">
+                Honey, somebody&apos;s gotta pay for this.
               </div>
             )}
             <div className="modal-action">

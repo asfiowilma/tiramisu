@@ -1,12 +1,12 @@
-import React from "react";
-
 import { HiPencil, HiTrash } from "react-icons/hi";
-import PersonBadge from "../People/PersonBadge";
+import { untaxed, useBillStore } from "@/services/hooks/useBillStore";
+
 import EveryoneBadge from "../People/EveryoneBadge";
+import { FaUserAlt } from "react-icons/fa";
+import PersonBadge from "../People/PersonBadge";
+import React from "react";
 import formatCurrency from "@/services/utils/formatCurrency";
 import { usePeopleStore } from "@/services/hooks/usePeopleStore";
-import { untaxed, useBillStore } from "@/services/hooks/useBillStore";
-import { FaUserAlt } from "react-icons/fa";
 
 const BillRow = ({
   uid,
@@ -15,11 +15,12 @@ const BillRow = ({
   tax: taxUid,
   price,
   qty,
+  payer,
   payers: payerUids,
   setIsModalOpen,
   isSummary = false,
 }: BillRowProps) => {
-  const { people } = usePeopleStore();
+  const { people, getPerson } = usePeopleStore();
   const { taxes, setActiveBill, removeBillItem } = useBillStore();
   const isEveryone = payerUids.length == people.length;
   const payers = people.filter((p) => payerUids.includes(p.uid));
@@ -33,7 +34,7 @@ const BillRow = ({
   return (
     <>
       <tr>
-        <td className="whitespace-normal flex flex-col">
+        <td className="flex flex-col whitespace-normal">
           <div className="font-medium text-black dark:text-white">{name}</div>
           {desc && <p className="text-slate-400 max-w-[20ch] sm:max-w-max">{desc}</p>}
           {taxUid != untaxed.uid && (
@@ -41,7 +42,7 @@ const BillRow = ({
               Tax: {tax?.name} ({tax?.rate}%)
             </p>
           )}
-          <div className="font-mono mt-1 text-black dark:text-white">
+          <div className="mt-1 font-mono text-black dark:text-white">
             Rp {formatCurrency(price)} x {qty}{" "}
             {isSummary && payers.length > 1 && (
               <span>
@@ -82,6 +83,8 @@ const BillRow = ({
         <tr>
           <td colSpan={3}>
             <div className="flex flex-wrap gap-1">
+              {payer && <PersonBadge name={getPerson(payer)?.name ?? ""} uid={payer} isPayer />}
+              {payer && <div className="divider divider-horizontal"></div>}
               {isEveryone ? (
                 <EveryoneBadge people={people} />
               ) : (

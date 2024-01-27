@@ -1,9 +1,9 @@
-import React from "react";
 import PersonIcon from "./PersonIcon";
+import React from "react";
 
-const PersonBadge = ({ name, uid }: PersonProps) => {
+const PersonBadge = ({ name, uid, isPayer }: PersonProps) => {
   return (
-    <div className="badge gap-1 pl-0">
+    <div className={`badge gap-1 pl-0 ${isPayer ? "badge-success" : ""}`}>
       <div className="avatar">
         <PersonIcon name={uid} />
       </div>

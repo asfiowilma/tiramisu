@@ -5,6 +5,7 @@ type BillItem = {
   tax?: string;
   qty: number;
   price: number;
+  payer?: string;
   payers: string[];
 };
 

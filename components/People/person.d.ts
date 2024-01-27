@@ -1,10 +1,12 @@
 type Person = {
   name: string;
   uid: string;
+  balance?: number;
   due?: number;
+  settlement?: Settlement[];
 };
 
-type PersonProps = Person;
+type PersonProps = Person & { isPayer?: boolean };
 
 type People = Person[];
 
@@ -13,3 +15,9 @@ type PeopleProps = {
 };
 
 type Summary = Record<string, number>;
+
+type Settlement = {
+  from: string;
+  to: string;
+  amount: number;
+};

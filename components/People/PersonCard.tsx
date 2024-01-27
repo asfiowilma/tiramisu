@@ -1,9 +1,10 @@
-import React, { useState } from "react";
 import { HiPencil, HiTrash } from "react-icons/hi";
-import { usePeopleStore } from "@/services/hooks/usePeopleStore";
-import { useForm } from "react-hook-form";
+import React, { useState } from "react";
+
 import ConfirmationDialog from "../ConfirmationDialog";
 import PersonIcon from "./PersonIcon";
+import { useForm } from "react-hook-form";
+import { usePeopleStore } from "@/services/hooks/usePeopleStore";
 
 const Person = ({ name, uid }: PersonProps) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -46,7 +47,7 @@ const Person = ({ name, uid }: PersonProps) => {
             </div>
           </>
         ) : (
-          <form onSubmit={handleSubmit(editPersonName)} className="flex flex-col gap-2 flex-1">
+          <form onSubmit={handleSubmit(editPersonName)} className="flex flex-col flex-1 gap-2">
             <input
               type="text"
               placeholder="Enter person's name"
@@ -59,10 +60,10 @@ const Person = ({ name, uid }: PersonProps) => {
                 onClick={() => setIsEditing(false)}
                 className="btn btn-sm btn-ghost"
               >
-                cancel
+                Cancel
               </button>
               <button type="submit" className="btn btn-sm btn-primary">
-                save
+                Save
               </button>
             </div>
           </form>

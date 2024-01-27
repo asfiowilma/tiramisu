@@ -1,12 +1,11 @@
+import BottomNav, { Step } from "../BottomNav";
 import React, { useState } from "react";
 
+import ConfirmationDialog from "../ConfirmationDialog";
 import { FaUserAlt } from "react-icons/fa";
 import Person from "@/components/People/PersonCard";
-
-import { usePeopleStore } from "@/services/hooks/usePeopleStore";
 import PersonInput from "../Form/PersonInput";
-import BottomNav, { Step } from "../BottomNav";
-import ConfirmationDialog from "../ConfirmationDialog";
+import { usePeopleStore } from "@/services/hooks/usePeopleStore";
 
 const PeopleTab = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -19,12 +18,12 @@ const PeopleTab = () => {
 
   return (
     <>
-      <div className="bg-base-100 mt-6 mb-4 xs:my-6 card card-compact xs:card-normal">
+      <div className="mt-6 mb-4 bg-base-100 xs:my-6 card card-compact xs:card-normal">
         <PersonInput />
       </div>
       <div className="card bg-base-100 card-compact xs:card-normal mb-14 sm:mb-6">
         <div className="card-body">
-          <div className="card-title justify-between">
+          <div className="justify-between card-title">
             <div className="card-title">
               <FaUserAlt className="w-5 h-5" /> People
             </div>
@@ -41,8 +40,8 @@ const PeopleTab = () => {
               <Person key={person.uid} name={person.name} uid={person.uid} />
             ))}
             {people.length == 0 && (
-              <div className="alert justify-center text-center">
-                <div>
+              <div className="card bg-base-200">
+                <div className="text-center card-body">
                   Nobody registered yet.
                   <br /> Add at least two people to continue~
                 </div>
@@ -63,7 +62,7 @@ const PeopleTab = () => {
         }
       >
         <span>Registered</span>
-        <span className="text-right text-lg font-medium leading-tight text-accent">
+        <span className="text-lg font-medium leading-tight text-right text-accent">
           {people.length} {people.length > 1 ? "people" : "person"}
         </span>
       </BottomNav>

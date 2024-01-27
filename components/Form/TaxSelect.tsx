@@ -1,7 +1,7 @@
+import { FaPlus } from "react-icons/fa";
+import React from "react";
 import { useBillStore } from "@/services/hooks/useBillStore";
 import { useInvoiceStore } from "@/services/hooks/useInvoiceStore";
-import React from "react";
-import { FaPlus } from "react-icons/fa";
 
 const TaxSelect = ({ register, setIsTaxModalOpen, isInvoice }: TaxInputProps) => {
   const { taxes: billTaxes } = useBillStore();
@@ -12,10 +12,10 @@ const TaxSelect = ({ register, setIsTaxModalOpen, isInvoice }: TaxInputProps) =>
   return (
     <>
       <div className="form-control">
-        <label className="label font-medium text-sm">Tax</label>
-        <div className="input-group">
+        <label className="text-sm font-medium label">Tax</label>
+        <div className="join">
           <select
-            className="select select-bordered w-full flex-1"
+            className="flex-1 w-full join-item select select-bordered"
             placeholder="How much was it?"
             {...register("tax")}
           >
@@ -28,9 +28,12 @@ const TaxSelect = ({ register, setIsTaxModalOpen, isInvoice }: TaxInputProps) =>
               </option>
             ))}
           </select>
-          <span onClick={() => setIsTaxModalOpen(true)} className="btn btn-secondary gap-2">
+          <span
+            onClick={() => setIsTaxModalOpen(true)}
+            className="gap-2 join-item btn btn-secondary"
+          >
             <FaPlus />
-            <div className="hidden sm:inline">New</div> Tax Rate
+            Tax Rate
           </span>
         </div>
       </div>

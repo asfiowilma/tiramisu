@@ -26,18 +26,18 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
         <title>Tiramisu</title>
       </Head>
-      <div className="min-h-screen flex flex-col items-center">
+      <div className="flex flex-col items-center min-h-screen">
         <Navbar isTransparent isFixed isAppWidth={false} />
         <main className="flex-1 w-full">
-          <div className="hero relative h-screen bg-gradient-to-br from-primary-focus via-primary/80 to-secondary-focus overflow-hidden">
-            <Blob className="absolute opacity-10 inset-0" />
-            <div className="hero-content flex-col lg:flex-row w-full p-8 lg:px-24">
-              <div className="flex justify-between w-full items-center">
+          <div className="relative h-screen overflow-hidden hero bg-gradient-to-br from-primary to-secondary">
+            <Blob className="absolute inset-0 opacity-10" />
+            <div className="flex-col w-full p-8 hero-content lg:flex-row lg:px-24">
+              <div className="flex items-center justify-between w-full">
                 <div className="text-primary-content">
-                  <h1 className="text-7xl  sm:text-8xl flex flex-col gap-4 font-bold mb-8">
+                  <h1 className="flex flex-col gap-4 mb-8 font-bold text-7xl sm:text-8xl">
                     Eat. Pay. <div>Split.</div>
                   </h1>
-                  <h2 className="font-bold ms:text-lg sm:text-xl mb-3">
+                  <h2 className="mb-3 font-bold ms:text-lg sm:text-xl">
                     It&apos;s app that allows you to put down a bill
                     <br className="hidden ms:inline" /> and have your friends pay you back
                   </h2>
@@ -46,8 +46,8 @@ const Home = () => {
                   </p>
                   <p>Also available as PWA.</p>
 
-                  <div className="mt-4 flex flex-col sm:flex-row gap-2 sm:gap-3">
-                    <Link href={"/"} className="btn btn-secondary text-primary-content px-8">
+                  <div className="flex flex-col gap-2 mt-4 sm:flex-row sm:gap-3">
+                    <Link href={"/"} className="px-8 btn btn-secondary text-primary-content">
                       <span className="lg:hidden inline pr-1.5">Try </span> Split bill
                     </Link>
                     <Link href={"/invoice"} className="btn glass text-primary-content">
@@ -55,13 +55,13 @@ const Home = () => {
                     </Link>
                     <InstallPWAButton />
                   </div>
-                  <Link href={"/about"} className="btn btn-ghost btn-sm mt-4">
+                  <Link href={"/about"} className="mt-4 btn btn-ghost btn-sm">
                     Learn more <HiArrowRight className="w-5 h-5 ml-1" />
                   </Link>
                 </div>
                 <div className="relative overflow-visible">
                   <Blob
-                    className="hidden absolute opacity-50 overflow-visible"
+                    className="absolute hidden overflow-visible opacity-50"
                     transform="translate(110 180) scale(2.8) rotate(10)"
                   />
                   <svg
@@ -91,12 +91,12 @@ const Home = () => {
                       fill="url(#pattern)"
                     ></path>
                   </svg>
-                  <div className="mockup-phone border-primary m-0 hidden lg:inline-block rotate-12 scale-90">
+                  <div className="hidden m-0 scale-90 mockup-phone border-primary lg:inline-block rotate-12">
                     <div className="camera"></div>
-                    <div className="display border-4 border-black">
+                    <div className="border-4 border-black display">
                       <iframe
                         src="/?hidenavbar=true"
-                        className="artboard artboard-demo phone-2 overflow-auto"
+                        className="overflow-auto artboard artboard-demo phone-2"
                         loading="lazy"
                       ></iframe>
                     </div>

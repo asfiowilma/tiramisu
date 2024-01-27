@@ -6,6 +6,7 @@ import { useBillStore } from "@/services/hooks/useBillStore";
 import { useNavigationStore } from "@/services/hooks/useNavigationStore";
 import { usePeopleStore } from "@/services/hooks/usePeopleStore";
 import { useSearchParams } from "next/navigation";
+import { useTheme } from "@/services/hooks/useTheme";
 
 const SplitBillLayout = ({ children }: LayoutProps) => {
   const searchParams = useSearchParams();
@@ -15,6 +16,7 @@ const SplitBillLayout = ({ children }: LayoutProps) => {
   const { people } = usePeopleStore();
   const { activeApp, activeSplitBillStep, setActiveSplitBillStep, setActiveApp } =
     useNavigationStore();
+  const { darkMode } = useTheme();
 
   useEffect(() => {
     if (activeApp != "split-bill") setActiveApp("split-bill");
@@ -25,17 +27,20 @@ const SplitBillLayout = ({ children }: LayoutProps) => {
       <Head>
         <title>Tiramisu | Split Bill</title>
       </Head>
-      <div className="min-h-screen flex flex-col  items-center bg-base-200 ">
+      <div
+        data-theme={darkMode ? "dark" : "light"}
+        className="flex flex-col items-center min-h-screen bg-base-200"
+      >
         {!hideNavbar && <Navbar />}
         <main
           className={`flex-1 px-2 py-6 ms:p-4 ms:pt-6 sm:p-6 max-w-screen-sm w-full ${
             hideNavbar ? "pt-10" : ""
           }`}
         >
-          <ul className="steps w-full">
+          <ul className="w-full steps">
             <li
               onClick={() => setActiveSplitBillStep("people")}
-              className="step cursor-pointer transition step-primary"
+              className="transition cursor-pointer step step-primary"
             >
               People
             </li>

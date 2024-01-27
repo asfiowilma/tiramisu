@@ -24,10 +24,10 @@ const ConfirmationDialog = ({
         <p className="text-lg font-medium">{message}</p>
         <div className="modal-action">
           <button type="button" onClick={onCancel} className="btn btn-ghost">
-            nevermind
+            Nevermind
           </button>
-          <button onClick={onConfirm} className="btn btn-primary px-8">
-            yes
+          <button onClick={onConfirm} className="px-8 btn btn-primary">
+            Yes
           </button>
         </div>
       </div>

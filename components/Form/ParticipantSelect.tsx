@@ -11,11 +11,15 @@ const ParticipantSelect = ({
   return (
     <>
       <div className="my-6 text-lg divider">Who&apos;s supposed to pay for this?</div>
-      <div className="w-full mb-4 btn-group">
-        <button onClick={clearPayerSelection} type="button" className="flex-1 btn">
+      <div className="w-full mb-4 join">
+        <button onClick={clearPayerSelection} type="button" className="flex-1 btn join-item">
           Clear Selection
         </button>
-        <button onClick={selectEveryone} type="button" className="flex-1 btn btn-secondary">
+        <button
+          onClick={selectEveryone}
+          type="button"
+          className="flex-1 btn join-item btn-secondary"
+        >
           Select Everyone
         </button>
       </div>

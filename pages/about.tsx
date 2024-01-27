@@ -8,9 +8,11 @@ import TrakteerButton from "@/components/trakteer/TrakteerButton";
 import TrakteerModal from "@/components/trakteer/TrakteerModal";
 import { TrakteerProvider } from "@/components/trakteer/TrakteerProvider";
 import { useNavigationStore } from "@/services/hooks/useNavigationStore";
+import { useTheme } from "@/services/hooks/useTheme";
 
 const About = () => {
   const { setActiveApp } = useNavigationStore();
+  const { darkMode } = useTheme();
 
   useEffect(() => {
     setActiveApp("");
@@ -27,14 +29,17 @@ const About = () => {
         <link rel="icon" href="/favicon.ico" />
         <title>About Tiramisu</title>
       </Head>
-      <div className="min-h-screen flex flex-col items-center bg-base-200">
+      <div
+        data-theme={darkMode ? "dark" : "light"}
+        className="flex flex-col items-center min-h-screen bg-base-200"
+      >
         <Navbar isTransparent isFixed isAppWidth={false} />
         <main className="flex-1 w-full">
-          <div className="hero relative min-h-screen bg-gradient-to-br from-primary-focus via-primary to-secondary-focus overflow-hidden">
-            <Blob className="hidden sm:block absolute opacity-10 inset-0" />
+          <div className="relative min-h-screen overflow-hidden hero bg-gradient-to-br from-primary via-primary to-secondary">
+            <Blob className="absolute inset-0 hidden sm:block opacity-10" />
             <div className="p-4">
-              <div className="card bg-base-200 max-w-screen-sm w-full mt-16 sm:m-8 shadow-lg">
-                <div className="card-body space-y-2">
+              <div className="w-full max-w-screen-sm mt-16 shadow-lg card bg-base-200 sm:m-8">
+                <div className="space-y-2 card-body">
                   <div className="card-title">
                     <GiCakeSlice className="w-5 h-5" /> About Tiramisu
                   </div>
@@ -64,7 +69,7 @@ const About = () => {
                   <p>Thanks for checking out Tiramisu - happy bill splitting!</p>
                   <div className="divider"></div>
                   <p>If you find it helpful, consider fueling the dev&apos;s caffeine addiction~</p>
-                  <div className="card-actions flex-col sm:flex-row items-stretch">
+                  <div className="flex-col items-stretch card-actions sm:flex-row">
                     <TrakteerProvider>
                       <TrakteerButton className="umami--click--trakteer-button-about" />
                       <TrakteerModal />

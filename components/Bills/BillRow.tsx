@@ -1,10 +1,11 @@
 import { HiPencil, HiTrash } from "react-icons/hi";
+import React, { useState } from "react";
 import { untaxed, useBillStore } from "@/services/hooks/useBillStore";
 
+import ConfirmationDialog from "../ConfirmationDialog";
 import EveryoneBadge from "../People/EveryoneBadge";
 import { FaUserAlt } from "react-icons/fa";
 import PersonBadge from "../People/PersonBadge";
-import React from "react";
 import formatCurrency from "@/services/utils/formatCurrency";
 import { usePeopleStore } from "@/services/hooks/usePeopleStore";
 
@@ -22,6 +23,7 @@ const BillRow = ({
 }: BillRowProps) => {
   const { people, getPerson } = usePeopleStore();
   const { taxes, setActiveBill, removeBillItem } = useBillStore();
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const isEveryone = payerUids.length == people.length;
   const payers = people.filter((p) => payerUids.includes(p.uid));
   const tax = taxes.find((t) => t.uid == taxUid);
@@ -70,12 +72,19 @@ const BillRow = ({
                 <HiPencil className="w-5 h-5" />
               </button>
               <button
-                onClick={() => removeBillItem(uid)}
+                onClick={() => setIsDialogOpen(true)}
                 className="btn btn-sm btn-ghost btn-square text-error"
               >
                 <HiTrash className="w-5 h-5" />
               </button>
             </div>
+            <ConfirmationDialog
+              message={`Are you sure you want to remove ${name}?`}
+              onCancel={() => setIsDialogOpen(false)}
+              onConfirm={() => removeBillItem(uid)}
+              isDialogOpen={isDialogOpen}
+              setIsDialogOpen={setIsDialogOpen}
+            />
           </td>
         )}
       </tr>

@@ -54,7 +54,7 @@ const SummaryTable = () => {
       </tbody>
       <tfoot>
         <tr>
-          <td>total</td>
+          <td className="uppercase">total</td>
           <td className="flex justify-between">
             <span>Rp</span> <span>{formatCurrency(getTotal())}</span>
           </td>

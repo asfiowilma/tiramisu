@@ -3,7 +3,7 @@ import React from "react";
 
 const PersonBadge = ({ name, uid, isPayer }: PersonProps) => {
   return (
-    <div className={`badge gap-1 pl-0 ${isPayer ? "badge-success" : ""}`}>
+    <div className={`badge gap-1 pl-0 ${isPayer ? "badge-accent" : ""}`}>
       <div className="avatar">
         <PersonIcon name={uid} />
       </div>

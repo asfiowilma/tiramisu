@@ -14,7 +14,7 @@ const PersonIcon = ({ name, size = 32, square }: PersonIconProps) => {
       name={name}
       variant="beam"
       square={square}
-      colors={["#92A1C6", "#146A7C", "#F0AB3D", "#C271B4", "#C20D90"]}
+      colors={["#92A1C6", "#439794", "#FDC160", "#C271B4", "#D9308A"]}
     />
   );
 };

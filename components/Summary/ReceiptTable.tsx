@@ -25,7 +25,7 @@ const ReceiptTable = ({ activeTab }: ReceiptTableProps) => {
             <BillRow key={billItem.uid} isSummary {...billItem} setIsModalOpen={(_) => {}} />
           ))}
         <tr>
-          <td className="font-medium text-right uppercase">Subtotal</td>
+          <td className="font-medium text-right">Subtotal</td>
           <td>
             <div className="flex justify-between">
               <span>Rp</span>
@@ -34,7 +34,7 @@ const ReceiptTable = ({ activeTab }: ReceiptTableProps) => {
           </td>
         </tr>
         <tr>
-          <td className="font-medium text-right uppercase">Tax</td>
+          <td className="font-medium text-right">Tax</td>
           <td>
             <div className="flex justify-between">
               <span>Rp</span>
@@ -45,7 +45,7 @@ const ReceiptTable = ({ activeTab }: ReceiptTableProps) => {
       </tbody>
       <tfoot>
         <tr>
-          <td className="text-right">Total</td>
+          <td className="text-right uppercase">Total</td>
           <td>
             <div className="flex justify-between text-lg normal-case text-accent">
               <span>Rp</span>

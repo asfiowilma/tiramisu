@@ -1,10 +1,10 @@
-import React from "react";
-import { HiReceiptTax } from "react-icons/hi";
-import { useForm } from "react-hook-form";
 import { FieldValues } from "react-hook-form/dist/types";
+import { HiReceiptTax } from "react-icons/hi";
+import React from "react";
 import { useBillStore } from "@/services/hooks/useBillStore";
-import { v4 as uuid } from "uuid";
+import { useForm } from "react-hook-form";
 import { useInvoiceStore } from "@/services/hooks/useInvoiceStore";
+import { v4 as uuid } from "uuid";
 
 type TaxModalProps = {
   isInvoice?: boolean;
@@ -38,7 +38,7 @@ const TaxModal = ({ isInvoice, isTaxModalOpen, setIsTaxModalOpen }: TaxModalProp
         <form onSubmit={handleSubmit(addNewRate)} className="pt-4">
           <div className="form-control">
             <input type="hidden" {...register("uid")} />
-            <label className="label font-medium text-sm">
+            <label className="text-sm font-medium label">
               <span className="label-text">
                 Name <span className="text-error">*</span>
               </span>
@@ -52,21 +52,21 @@ const TaxModal = ({ isInvoice, isTaxModalOpen, setIsTaxModalOpen }: TaxModalProp
             />
           </div>
           <div className="form-control">
-            <label className="label font-medium text-sm">
+            <label className="text-sm font-medium label">
               <span className="label-text">
                 Tax Rate <span className="text-error">*</span>
               </span>
             </label>
-            <div className="input-group">
+            <div className="join">
               <input
                 type="number"
                 step={0.05}
-                className="input input-bordered flex-1"
+                className="flex-1 join-item input input-bordered"
                 placeholder="How much is the tax rate?"
                 required
                 {...register("rate", { required: true, valueAsNumber: true })}
               />
-              <span>%</span>
+              <span className="flex items-center px-4 join-item bg-base-200">%</span>
             </div>
           </div>
           <div className="modal-action">

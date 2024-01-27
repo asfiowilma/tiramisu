@@ -1,11 +1,11 @@
-import { FaRegMoon, FaSun } from "react-icons/fa";
-import React, { useEffect } from "react";
+import { BiMoon, BiSun } from "react-icons/bi";
 
 import { GiCakeSlice } from "react-icons/gi";
 import Link from "next/link";
-import { themeChange } from "theme-change";
+import React from "react";
 import { useNavigationStore } from "@/services/hooks/useNavigationStore";
 import { useRouter } from "next/router";
+import { useTheme } from "@/services/hooks/useTheme";
 
 interface NavbarProps {
   isTransparent?: boolean;
@@ -16,10 +16,7 @@ interface NavbarProps {
 const Navbar = ({ isTransparent, isFixed, isAppWidth = true }: NavbarProps) => {
   const { pathname } = useRouter();
   const { activeApp } = useNavigationStore();
-  useEffect(() => {
-    themeChange(false);
-    // 👆 false parameter is required for react project
-  }, []);
+  const { darkMode, setDarkMode } = useTheme();
 
   return (
     <header
@@ -31,12 +28,12 @@ const Navbar = ({ isTransparent, isFixed, isAppWidth = true }: NavbarProps) => {
     >
       <div className={`${isAppWidth ? "max-w-screen-sm" : "p-4"} mx-auto w-full`}>
         <div className="sm:hidden dropdown dropdown-bottom">
-          <div tabIndex={0} className="btn btn-ghost pl-2 gap-2">
+          <div tabIndex={0} className="gap-2 pl-2 btn btn-ghost">
             <GiCakeSlice className="w-8 h-8" /> <span>Tiramisu</span>
           </div>
           <ul
             tabIndex={0}
-            className="dropdown-content menu p-2 shadow bg-base-300 rounded-box w-52"
+            className="p-2 shadow dropdown-content menu bg-base-300 rounded-box w-52"
           >
             <li>
               <Link href={"/"}>Split Bill</Link>
@@ -67,7 +64,7 @@ const Navbar = ({ isTransparent, isFixed, isAppWidth = true }: NavbarProps) => {
           </ul>
         </div>
         <Link href={"/home"}>
-          <div className="hidden sm:inline-flex btn btn-ghost pl-2 gap-2">
+          <div className="hidden gap-2 pl-2 sm:inline-flex btn btn-ghost">
             <GiCakeSlice className="w-8 h-8" /> <span>Tiramisu</span>
           </div>
         </Link>
@@ -87,7 +84,7 @@ const Navbar = ({ isTransparent, isFixed, isAppWidth = true }: NavbarProps) => {
             </Link>
           </div>
         ) : (
-          <div className="hidden sm:inline-flex btn-group gap-1">
+          <div className="hidden gap-1 sm:inline-flex btn-group">
             <Link href={"/"} className="btn btn-sm glass text-primary-content">
               Split bill
             </Link>
@@ -96,15 +93,33 @@ const Navbar = ({ isTransparent, isFixed, isAppWidth = true }: NavbarProps) => {
             </Link>
           </div>
         )}
-        <div className="flex-1 flex justify-end">
-          <button
-            className=" btn btn-square btn-ghost swap swap-rotate "
-            data-toggle-theme="dark,light"
-            data-act-class="swap-active"
-          >
-            <FaSun className="swap-off w-5 h-5" />
-            <FaRegMoon className="swap-on w-5 h-5" />
-          </button>
+        <div className="flex justify-end flex-1">
+          <label className="grid cursor-pointer place-items-center">
+            <input
+              type="checkbox"
+              defaultChecked={darkMode}
+              onChange={() => setDarkMode(!darkMode)}
+              className="col-span-2 col-start-1 row-start-1 toggle"
+            />
+            <BiSun className={`col-start-1 row-start-1 ${!darkMode && "text-white"}`} />
+            <BiMoon className={`col-start-2 row-start-1 ${darkMode && "text-neutral"}`} />
+          </label>
+          <input
+            type="radio"
+            className="hidden theme-controller"
+            name="theme-picker"
+            value="dark"
+            readOnly
+            checked={darkMode}
+          />
+          <input
+            type="radio"
+            className="hidden theme-controller"
+            name="theme-picker"
+            value="light"
+            readOnly
+            checked={!darkMode}
+          />
         </div>
       </div>
     </header>

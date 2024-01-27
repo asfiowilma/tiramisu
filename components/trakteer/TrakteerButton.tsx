@@ -1,5 +1,5 @@
-import React from "react";
 import Image from "../Image";
+import React from "react";
 import { useTrakteer } from "./TrakteerProvider";
 
 type Props = {
@@ -18,7 +18,7 @@ const TrakteerButton = ({ className, size = 100 }: Props) => {
 
   return (
     <button
-      className={`rounded-full font-['Quicksand'] btn normal-case overflow-visible transition ${className}`}
+      className={`rounded-full font-['Quicksand'] btn btn-secondary normal-case overflow-visible transition ${className}`}
       onClick={() => onButtonClick()}
     >
       <span className="animate-[trbtn-wiggle_3s_infinite] overflow-visible">
@@ -29,7 +29,7 @@ const TrakteerButton = ({ className, size = 100 }: Props) => {
           height={(26 * size) / 100}
         />
       </span>
-      <span className="font-bold ml-1">{isLoading ? "Loading..." : "Buy me a Choco Latte"}</span>
+      <span className="ml-1 font-bold">{isLoading ? "Loading..." : "Buy me a Choco Latte"}</span>
     </button>
   );
 };

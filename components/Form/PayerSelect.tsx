@@ -9,7 +9,7 @@ const PayerSelect = ({ register, watch }: PayerSelectProps) => {
   return (
     <div className="form-control">
       <label className="text-sm font-medium label">Payer</label>
-      <div className="input-group">
+      <div className="flex items-center gap-3">
         <span>
           <PersonIcon name={watch("payer")} />
         </span>
@@ -18,7 +18,7 @@ const PayerSelect = ({ register, watch }: PayerSelectProps) => {
           placeholder="Who paid?"
           {...register("payer")}
         >
-          <option value="">Who paid for this?</option>
+          <option value="groupFunds">Who paid for this?</option>
           {people.map((person) => (
             <option value={person.uid} key={person.uid}>
               {person.name}

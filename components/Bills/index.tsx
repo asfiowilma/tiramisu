@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 
-import { IoReceipt } from "react-icons/io5";
+import BillForm from "./BillForm";
 import BillRow from "./BillRow";
 import BillSummary from "./BillSummary";
-import BillForm from "./BillForm";
-import { useBillStore } from "@/services/hooks/useBillStore";
-import { FaPlus } from "react-icons/fa";
-import ConfirmationDialog from "../ConfirmationDialog";
 import BottomNav from "../BottomNav";
-import formatCurrency from "@/services/utils/formatCurrency";
+import ConfirmationDialog from "../ConfirmationDialog";
+import { FaPlus } from "react-icons/fa";
+import { IoReceipt } from "react-icons/io5";
 import { Step } from "../BottomNav";
+import formatCurrency from "@/services/utils/formatCurrency";
+import { useBillStore } from "@/services/hooks/useBillStore";
 
 const BillTab = () => {
   const { bill, getTotal, setActiveBill, removeAllBillItem, removeAllTaxRates } = useBillStore();
@@ -28,20 +28,20 @@ const BillTab = () => {
 
   return (
     <>
-      <div className="card compact bg-base-100 mt-6 mb-4 sm:mb-6">
+      <div className="mt-6 mb-4 card compact bg-base-100 sm:mb-6">
         <div className="card-body">
-          <div className="flex py-1 pl-4 justify-between">
+          <div className="flex justify-between py-1 pl-4">
             <div className="card-title">
               <IoReceipt className="w-5 h-5" /> Bill
             </div>
             <div className="inline-flex">
-              <div className="dropdown dropdown-end">
+              <div className="z-50 dropdown dropdown-end">
                 <button tabIndex={0} title="Remove everything" className="btn btn-ghost btn-sm">
                   Reset
                 </button>
                 <ul
                   tabIndex={0}
-                  className="dropdown-content menu p-2 shadow-lg bg-base-300 rounded-box w-40"
+                  className="w-40 p-2 shadow-lg dropdown-content menu bg-base-300 rounded-box"
                 >
                   <li onClick={() => setIsDialogOpen(true)}>
                     <a>Reset bill items</a>
@@ -73,9 +73,9 @@ const BillTab = () => {
                 {bill.length === 0 && (
                   <tr>
                     <td colSpan={3}>
-                      <div className="flex flex-col items-center text-center gap-2">
+                      <div className="flex flex-col items-center gap-2 text-center">
                         No item yet.
-                        <button onClick={newItem} className="btn btn-primary gap-2">
+                        <button onClick={newItem} className="gap-2 btn btn-primary">
                           <FaPlus className="w-4 h-4" />
                           Add Item
                         </button>
@@ -95,7 +95,7 @@ const BillTab = () => {
         tooltipContent={bill.length == 0 ? "Add at least 1 item to the bill" : ""}
       >
         <span>Total</span>
-        <span className="text-right text-lg font-medium text-accent">
+        <span className="text-lg font-medium text-right text-accent">
           Rp {formatCurrency(getTotal())}
         </span>
       </BottomNav>

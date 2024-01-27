@@ -1,9 +1,9 @@
+import { FaUserAlt } from "react-icons/fa";
+import { FieldValues } from "react-hook-form/dist/types";
 import React from "react";
 import { useForm } from "react-hook-form";
-import { FaUserAlt } from "react-icons/fa";
-import { v4 as uuid } from "uuid";
 import { usePeopleStore } from "@/services/hooks/usePeopleStore";
-import { FieldValues } from "react-hook-form/dist/types";
+import { v4 as uuid } from "uuid";
 
 const PersonInput = () => {
   const { addPerson } = usePeopleStore();
@@ -19,11 +19,11 @@ const PersonInput = () => {
     <div className="card-body">
       <form onSubmit={handleSubmit(addNewPerson)} className="w-full">
         <div className="form-control">
-          <label className="label label-text uppercase text-sm font-medium pt-0">
+          <label className="pt-0 text-sm font-medium uppercase label label-text">
             Add New Person
           </label>
-          <div className="input-group">
-            <span>
+          <div className="join">
+            <span className="grid px-4 join-item bg-base-200 place-items-center">
               <FaUserAlt />
             </span>
             <input type="hidden" {...register("uid")} />
@@ -31,10 +31,10 @@ const PersonInput = () => {
               type="text"
               maxLength={20}
               placeholder="Enter person's name"
-              className="input input-bordered flex-1 w-full"
+              className="flex-1 w-full join-item input input-bordered"
               {...register("name", { required: true })}
             />
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="join-item btn btn-primary">
               Add
             </button>
           </div>

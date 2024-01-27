@@ -11,7 +11,18 @@ module.exports = {
     },
   },
   daisyui: {
-    themes: ["light", "dark"],
+    themes: [
+      {
+        light: {
+          ...require("daisyui/src/theming/themes")["light"],
+          primary: "#6436E1",
+        },
+        dark: {
+          ...require("daisyui/src/theming/themes")["dark"],
+          primary: "#661AE6",
+        },
+      },
+    ],
   },
   plugins: [require("daisyui"), require("@tailwindcss/typography")],
   darkMode: ["class", '[data-theme="dark"]'],

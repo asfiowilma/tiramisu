@@ -21,7 +21,7 @@ const InputField = ({
     ) : (
       <input
         type={type}
-        className={`input input-bordered ${leftAddon ? "w-full flex-1" : ""}`}
+        className={`input input-bordered ${leftAddon ? "w-full flex-1 join-item" : ""}`}
         placeholder={placeholder}
         required={required}
         {...register(name, { required })}
@@ -31,14 +31,14 @@ const InputField = ({
 
   return (
     <div className={`form-control ${className}`}>
-      <label className="label font-medium text-sm">
+      <label className="text-sm font-medium label">
         <span className="label-text">
           {label} {required && <span className="text-error">*</span>}
         </span>
       </label>
       {leftAddon ? (
-        <div className="input-group">
-          <span>{leftAddon}</span>
+        <div className="join">
+          <span className="flex items-center px-4 join-item bg-base-200">{leftAddon}</span>
           <Input />
         </div>
       ) : (

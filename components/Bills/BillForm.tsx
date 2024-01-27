@@ -100,7 +100,7 @@ const BillForm = ({ isModalOpen, setIsModalOpen }: BillFormProps) => {
             )}
             <div className="modal-action">
               <button type="button" onClick={closeModal} className="btn btn-ghost">
-                cancel
+                Cancel
               </button>
               <button type="submit" className="btn btn-primary">
                 Submit

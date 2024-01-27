@@ -13,24 +13,31 @@ type SettlementsProps = {
 const Settlements = ({ settlements, isSummary }: SettlementsProps) => {
   const { getPerson } = usePeopleStore();
 
-  if (!settlements) return <></>;
+  const getName = (uid: string) => {
+    if (uid === "groupFunds") return "Group Funds";
+    return getPerson(uid)?.name;
+  };
+
+  const noSettlements =
+    !settlements || settlements.length == 0 || settlements.every((s) => s.to == "groupFunds");
+  if (noSettlements) return <></>;
   return (
-    <div className={`flex flex-col pl-4 ${isSummary ? "" : "gap-2"}`}>
-      {!isSummary && <p>Payments to be made</p>}
+    <div className={`flex flex-col pl-4 break-words ${isSummary ? "" : "gap-2"}`}>
+      {!isSummary && <div className="divider">Payments to be Made</div>}
       {settlements.map((settlement) => (
         <div
           key={settlement.to}
           className="flex items-center gap-2 text-left tooltip tooltip-bottom"
-          data-tip={`${getPerson(settlement.from)?.name} transfers Rp${formatCurrency(
+          data-tip={`${getName(settlement.from)} transfers Rp${formatCurrency(
             settlement.amount
-          )} to ${getPerson(settlement.to)?.name}`}
+          )} to ${getName(settlement.to)}`}
         >
           {!isSummary && (
             <>
               <div className="avatar mask mask-circle">
                 <PersonIcon name={settlement.from} square={false} size={isSummary ? 16 : 32} />
               </div>
-              <span>{getPerson(settlement.from)?.name}</span>
+              <span>You</span>
             </>
           )}
           <BiTransferAlt size={isSummary ? 20 : 24} />
@@ -39,7 +46,7 @@ const Settlements = ({ settlements, isSummary }: SettlementsProps) => {
           </div>
           <p className={isSummary ? "text-sm" : "flex"}>
             <span className="flex-1">
-              {getPerson(settlement.to)?.name}
+              {getName(settlement.to)}
               {isSummary && ": Rp"}
             </span>
             {!isSummary && <span>Rp</span>}

@@ -21,8 +21,8 @@ const SummaryTable = () => {
       <tbody>
         {people.map((person) => (
           <tr key={person.uid}>
-            <td className="break-all whitespace-normal">
-              <div className="flex items-center gap-3">
+            <td className="whitespace-normal">
+              <div className="flex items-center gap-3 break-all">
                 <div className="avatar">
                   <div className="mask mask-squircle">
                     <PersonIcon size={36} name={person.uid} square />

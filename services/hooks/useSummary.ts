@@ -17,6 +17,7 @@ const useSummary = () => {
 
       // update payer's balance
       if (billItem.payer) balances[billItem.payer] = (balances[billItem.payer] ?? 0) + withTax;
+      else balances["groupFunds"] = (balances["groupFunds"] ?? 0) + withTax;
 
       // update due
       const billAmount = withTax / billItem.payers.length;
@@ -38,6 +39,7 @@ const useSummary = () => {
       if (balance > 0) loan[personId] = balance;
       else debt[personId] = balance;
     }
+    if (balances["groupFunds"]) loan["groupFunds"] = balances["groupFunds"];
 
     const loanArray = Object.entries(loan);
     let i = 0;

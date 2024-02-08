@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 import { BiTransferAlt } from "react-icons/bi";
 import PersonBadge from "./People/PersonBadge";
@@ -25,7 +25,7 @@ const WhatsNewModal = () => {
       className={`modal modal-bottom sm:modal-middle ${show ? "modal-open" : ""}`}
     >
       <div className="modal-box">
-        <h2 className="text-lg font-bold sm:text-xl">What's New in Tiramisu</h2>
+        <h2 className="text-lg font-bold sm:text-xl">What&apos;s New in Tiramisu</h2>
         <div className="my-2 divider"></div>
         <p className="badge badge-success">v0.2.0</p>
         <h3 className="font-bold sm:text-lg">✨ Who Paid?</h3>
@@ -62,13 +62,13 @@ const WhatsNewModal = () => {
           </div>
         </div>
         <p>
-          When multiple folks chip in for the bill, it's hard to keep track who owes who. Not
-          anymore! Just jot down who paid, and we'll sort it out. Easy peasy!
+          When multiple folks chip in for the bill, it&apos;s hard to keep track who owes who. Not
+          anymore! Just jot down who paid, and we&apos;ll sort it out. Easy peasy!
         </p>
         <h3 className="pt-4 font-bold sm:text-lg">✨ Enhanced Controls</h3>
         <p className="py-2">
-          We've added new controls to individual receipts, now you can toggle tax info and show/hide
-          item details before sharing~
+          We&apos;ve added new controls to individual receipts, now you can toggle tax info and
+          show/hide item details before sharing~
         </p>
         <p className="pt-2 font-medium">Misc Improvements:</p>
         <ul className="pt-1 pl-2">

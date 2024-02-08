@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import { HiDownload } from "react-icons/hi";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 let deferredPrompt: any;
 const InstallPWAButton = () => {
   const [installable, setInstallable] = useState(false);

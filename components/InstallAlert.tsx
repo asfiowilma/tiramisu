@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { BiInfoCircle } from "react-icons/bi";
 import useLocalStorage from "@/services/hooks/useLocalStorage";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 let deferredPrompt: any;
 const InstallAlert = () => {
   const [installable, setInstallable] = useState(false);

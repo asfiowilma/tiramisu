@@ -16,7 +16,7 @@ const EveryonesBill = ({ resetEverything }: EveryonesBillProps) => {
 
   return (
     <div ref={ref} className={isPrinting ? "p-4 bg-base-300" : "p-0 mt-6 mb-4 xs:my-6"}>
-      <div className="overflow-hidden bg-base-100 card card-compact ms:card-normal">
+      <div className="overflow-hidden bg-base-100 card card-compact sm:card-normal">
         <div className="card-body bg-base-100">
           <div className="w-full card-title">
             <IoReceipt className="w-5 h-5" /> Everyone&apos;s Bill

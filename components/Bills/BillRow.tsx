@@ -76,15 +76,15 @@ const BillRow = ({
         </td>
         {!isSummary && (
           <td>
-            <div className="btn-group btn-group-vertical">
-              <button onClick={editBill} className="btn btn-sm btn-ghost btn-square">
-                <HiPencil className="w-5 h-5" />
+            <div className="join join-vertical">
+              <button onClick={editBill} className="btn join-item btn-sm btn-ghost btn-square">
+                <HiPencil size={24} />
               </button>
               <button
                 onClick={() => setIsDialogOpen(true)}
-                className="btn btn-sm btn-ghost btn-square text-error"
+                className="btn join-item btn-sm btn-ghost btn-square text-error"
               >
-                <HiTrash className="w-5 h-5" />
+                <HiTrash size={24} />
               </button>
             </div>
             <ConfirmationDialog
@@ -104,7 +104,7 @@ const BillRow = ({
               {payer && (
                 <PersonBadge name={getPerson(payer)?.name ?? "Group Funds"} uid={payer} isPayer />
               )}
-              {payer && <div className="divider divider-horizontal"></div>}
+              {payer && <div className="mx-0 divider divider-horizontal"></div>}
               {isEveryone ? (
                 <EveryoneBadge people={people} />
               ) : (

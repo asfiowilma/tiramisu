@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 
 import Head from "next/head";
+import InstallAlert from "../InstallAlert";
 import Navbar from "@/components/Navbar";
 import { useBillStore } from "@/services/hooks/useBillStore";
 import { useNavigationStore } from "@/services/hooks/useNavigationStore";
@@ -65,6 +66,7 @@ const SplitBillLayout = ({ children }: LayoutProps) => {
               Summary
             </li>
           </ul>
+          <InstallAlert />
           {children}
         </main>
       </div>

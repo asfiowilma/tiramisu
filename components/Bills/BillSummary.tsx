@@ -11,7 +11,7 @@ const BillSummary = () => {
         <table className="table table-sm">
           <tbody>
             <tr>
-              <th className="bg-base-300 rounded-t-lg">Subtotal</th>
+              <th className="rounded-t-lg bg-base-300">Subtotal</th>
               <td className="text-right">Rp {formatCurrency(getSubtotal())}</td>
             </tr>
             <tr>
@@ -19,8 +19,8 @@ const BillSummary = () => {
               <td className="text-right">Rp {formatCurrency(getTaxTotal())}</td>
             </tr>
             <tr>
-              <th className="bg-base-300 rounded-b-lg">Total</th>
-              <td className="text-right text-lg font-medium text-accent">
+              <th className="rounded-b-lg bg-base-300">Total</th>
+              <td className="text-lg font-medium text-right text-accent">
                 Rp {formatCurrency(getTotal())}
               </td>
             </tr>

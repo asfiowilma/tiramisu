@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
 
 import Credits from "../Credits";
+import Divider from "../Divider";
 import { HiShare } from "react-icons/hi";
+import IndividualSummaryControls from "./IndividualSummaryControls";
 import PersonIcon from "../People/PersonIcon";
 import ReceiptTable from "./ReceiptTable";
 import Settlements from "./Settlements";
 import { usePeopleStore } from "@/services/hooks/usePeopleStore";
 import usePrint from "@/services/hooks/usePrint";
-import Divider from "../Divider";
-import IndividualSummaryControls from "./IndividualSummaryControls";
 
 const IndividualReceipts = () => {
   const { people } = usePeopleStore();
-  const [activeTab, setActiveTab] = useState(people.at(2)?.uid);
+  const [activeTab, setActiveTab] = useState(people.at(0)?.uid);
   const [activePerson, setActivePerson] = useState<Person>();
   const { ref, saveImage, isPrinting } = usePrint();
   const noSettlements =
@@ -26,7 +26,7 @@ const IndividualReceipts = () => {
 
   return (
     <div ref={ref} className={isPrinting ? "p-4 bg-base-300" : "p-0"}>
-      <div className="overflow-hidden card bg-base-100 card-compact ms:card-normal">
+      <div className="overflow-hidden card bg-base-100 card-compact sm:card-normal">
         <div className="card-body bg-base-100">
           <div className="card-title">
             <div className="avatar">
@@ -49,8 +49,9 @@ const IndividualReceipts = () => {
             }`}
           >
             <button
+              type="button"
               onClick={() => saveImage(`splitbill-${activePerson?.name}`)}
-              className="h-auto gap-2 btn btn-primary umami--click--share-individual-bill"
+              className="h-auto gap-2 mt-4 sm:mt-0 btn btn-primary umami--click--share-individual-bill"
             >
               <HiShare className="w-5 h-5" /> Share{" "}
               {(activePerson?.name.length ?? 0) < 12 && `${activePerson?.name}'s`} Bill

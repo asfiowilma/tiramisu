@@ -30,14 +30,17 @@ const Person = ({ name, uid }: PersonProps) => {
         </div>
         {!isEditing ? (
           <>
-            <div className="flex-1">{name}</div>
-            <div className="btn-group">
-              <button onClick={() => setIsEditing(true)} className="btn btn-ghost btn-square">
+            <div className="flex-1 truncate">{name}</div>
+            <div className="flex-none join">
+              <button
+                onClick={() => setIsEditing(true)}
+                className="btn join-item btn-ghost btn-square"
+              >
                 <HiPencil title={`Change ${name}'s name`} size={24} />
               </button>
               <button
                 onClick={() => setIsDialogOpen(true)}
-                className="btn btn-ghost btn-square text-error"
+                className="btn join-item btn-ghost btn-square text-error"
               >
                 <HiTrash title={`Delete ${name}`} size={24} />
               </button>

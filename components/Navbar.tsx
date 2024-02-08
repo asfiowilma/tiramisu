@@ -6,6 +6,7 @@ import React from "react";
 import { useNavigationStore } from "@/services/hooks/useNavigationStore";
 import { useRouter } from "next/router";
 import { useTheme } from "@/services/hooks/useTheme";
+import { useWhatsNew } from "@/services/hooks/useWhatsNew";
 
 interface NavbarProps {
   isTransparent?: boolean;
@@ -17,6 +18,7 @@ const Navbar = ({ isTransparent, isFixed, isAppWidth = true }: NavbarProps) => {
   const { pathname } = useRouter();
   const { activeApp } = useNavigationStore();
   const { darkMode, setDarkMode } = useTheme();
+  const { setShow } = useWhatsNew();
 
   return (
     <header
@@ -93,7 +95,12 @@ const Navbar = ({ isTransparent, isFixed, isAppWidth = true }: NavbarProps) => {
             </Link>
           </div>
         )}
-        <div className="flex justify-end flex-1">
+        <div className="flex items-center justify-end flex-1 gap-2">
+          <div className="tooltip tooltip-left" data-tip="See what's new!">
+            <button className="badge" onClick={() => setShow(true)}>
+              v0.2.0
+            </button>
+          </div>
           <label className="grid cursor-pointer place-items-center">
             <input
               type="checkbox"

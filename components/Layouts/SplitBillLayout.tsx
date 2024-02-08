@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import Head from "next/head";
 import InstallAlert from "../InstallAlert";
 import Navbar from "@/components/Navbar";
+import WhatsNewModal from "../WhatsNewModal";
 import { useBillStore } from "@/services/hooks/useBillStore";
 import { useNavigationStore } from "@/services/hooks/useNavigationStore";
 import { usePeopleStore } from "@/services/hooks/usePeopleStore";
@@ -38,6 +39,7 @@ const SplitBillLayout = ({ children }: LayoutProps) => {
             hideNavbar ? "pt-10" : ""
           }`}
         >
+          {!hideNavbar && <WhatsNewModal />}
           <ul className="w-full steps">
             <li
               onClick={() => setActiveSplitBillStep("people")}

@@ -1,4 +1,3 @@
-import { BiTransferAlt } from "react-icons/bi";
 import PersonIcon from "../People/PersonIcon";
 import React from "react";
 import Settlements from "./Settlements";

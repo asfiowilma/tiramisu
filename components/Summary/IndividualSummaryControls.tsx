@@ -1,5 +1,4 @@
 import { usePeopleStore } from "@/services/hooks/usePeopleStore";
-import usePrint from "@/services/hooks/usePrint";
 import { useSummaryControlStore } from "@/services/hooks/useSummaryControls";
 import React from "react";
 

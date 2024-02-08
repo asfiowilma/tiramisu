@@ -32,17 +32,14 @@ const Person = ({ name, uid }: PersonProps) => {
           <>
             <div className="flex-1">{name}</div>
             <div className="btn-group">
-              <button
-                onClick={() => setIsEditing(true)}
-                className="btn btn-sm btn-ghost btn-square"
-              >
-                <HiPencil title={`Change ${name}'s name`} className="w-5 h-5" />
+              <button onClick={() => setIsEditing(true)} className="btn btn-ghost btn-square">
+                <HiPencil title={`Change ${name}'s name`} size={24} />
               </button>
               <button
                 onClick={() => setIsDialogOpen(true)}
-                className="btn btn-sm btn-ghost btn-square text-error"
+                className="btn btn-ghost btn-square text-error"
               >
-                <HiTrash title={`Delete ${name}`} className="w-5 h-5" />
+                <HiTrash title={`Delete ${name}`} size={24} />
               </button>
             </div>
           </>

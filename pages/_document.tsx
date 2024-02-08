@@ -12,9 +12,9 @@ export default function Document() {
         <meta name="format-detection" content="telephone=no" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="msapplication-config" content="/icons/browserconfig.xml" />
-        <meta name="msapplication-TileColor" content="#4406CB" />
+        <meta name="msapplication-TileColor" content="#661AE6" />
         <meta name="msapplication-tap-highlight" content="no" />
-        <meta name="theme-color" content="#4406CB" />
+        <meta name="theme-color" content="#661AE6" />
 
         <link rel="icon" type="image/png" sizes="196x196" href="/icons/favicon-196.png" />
         <meta name="msapplication-square70x70logo" content="/icons/mstile-icon-128.png" />
@@ -195,6 +195,7 @@ export default function Document() {
         <meta property="og:site_name" content="Tiramisu | Split Bill and Invoice Maker" />
         <meta property="og:url" content="https://yourdomain.com" />
         <meta property="og:image" content="https://yourdomain.com/icons/apple-touch-icon.png" />
+        <link rel="manifest" href="/manifest.json" />
       </Head>
       <body>
         <Main />

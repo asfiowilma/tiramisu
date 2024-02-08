@@ -10,7 +10,7 @@ type ReceiptTableProps = {
 
 const ReceiptTable = ({ activeTab }: ReceiptTableProps) => {
   const { bill, getIndividualSubtotal, getIndividualTaxTotal, getIndividualTotal } = useBillStore();
-  const { isShowDetails, isShowTax } = useSummaryControlStore();
+  const { isShowTax } = useSummaryControlStore();
 
   return (
     <>

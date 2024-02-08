@@ -1,11 +1,8 @@
 import { BiTransferAlt } from "react-icons/bi";
-import Divider from "../Divider";
-import PersonBadge from "../People/PersonBadge";
 import PersonIcon from "../People/PersonIcon";
 import React from "react";
 import formatCurrency from "@/services/utils/formatCurrency";
 import { usePeopleStore } from "@/services/hooks/usePeopleStore";
-import usePrint from "@/services/hooks/usePrint";
 
 type SettlementsProps = {
   settlements: Person["settlement"];

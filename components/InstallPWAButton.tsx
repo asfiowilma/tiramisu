@@ -1,9 +1,9 @@
 import React, { MouseEventHandler, useEffect, useState } from "react";
 import { HiDownload } from "react-icons/hi";
-import { IoCodeDownload, IoDownload } from "react-icons/io5";
 
 const InstallPWAButton = () => {
   const [supportsPWA, setSupportsPWA] = useState(false);
+  // eslint-disable-next-line  @typescript-eslint/no-explicit-any
   const [promptInstall, setPromptInstall] = useState<any>(null);
 
   useEffect(() => {

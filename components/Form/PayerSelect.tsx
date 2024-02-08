@@ -1,4 +1,3 @@
-import PersonBadge from "../People/PersonBadge";
 import PersonIcon from "../People/PersonIcon";
 import React from "react";
 import { usePeopleStore } from "@/services/hooks/usePeopleStore";

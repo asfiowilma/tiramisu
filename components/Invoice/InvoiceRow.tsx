@@ -1,12 +1,8 @@
 import React from "react";
 
 import { HiPencil, HiTrash } from "react-icons/hi";
-import PersonBadge from "../People/PersonBadge";
-import EveryoneBadge from "../People/EveryoneBadge";
 import formatCurrency from "@/services/utils/formatCurrency";
-import { usePeopleStore } from "@/services/hooks/usePeopleStore";
-import { untaxed, useBillStore } from "@/services/hooks/useBillStore";
-import { FaUserAlt } from "react-icons/fa";
+import { untaxed } from "@/services/hooks/useBillStore";
 import { useInvoiceStore } from "@/services/hooks/useInvoiceStore";
 
 const InvoiceRow = ({
@@ -29,7 +25,7 @@ const InvoiceRow = ({
 
   return (
     <tr>
-      <td className="whitespace-normal flex flex-col">
+      <td className="flex flex-col whitespace-normal">
         <div className="font-medium text-black dark:text-white">{name}</div>
         {desc && <p className="text-slate-400 max-w-[20ch] sm:max-w-max">{desc}</p>}
         {taxUid != untaxed.uid && (tax?.rate ?? 0) > 0 && (
@@ -37,7 +33,7 @@ const InvoiceRow = ({
             Tax: {tax?.name} ({tax?.rate}%)
           </p>
         )}
-        <div className="font-mono mt-1 text-black dark:text-white">
+        <div className="mt-1 font-mono text-black dark:text-white">
           Rp {formatCurrency(price)} x {qty}{" "}
         </div>
       </td>

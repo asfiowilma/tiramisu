@@ -1,7 +1,7 @@
 import { toBlob } from "html-to-image";
 import { useCallback } from "react";
-import { useState } from "react";
 import { useRef } from "react";
+import { useState } from "react";
 
 const usePrint = () => {
   const ref = useRef<HTMLDivElement>(null);

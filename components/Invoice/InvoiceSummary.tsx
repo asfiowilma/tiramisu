@@ -1,6 +1,6 @@
-import { useInvoiceStore } from "@/services/hooks/useInvoiceStore";
 import React from "react";
 import formatCurrency from "@/services/utils/formatCurrency";
+import { useInvoiceStore } from "@/services/hooks/useInvoiceStore";
 
 const InvoiceSummary = () => {
   const { getSubtotal, getTaxTotal, getTotal } = useInvoiceStore();
@@ -8,7 +8,7 @@ const InvoiceSummary = () => {
   return (
     <div className="card card-compact sm:card-normal bg-base-100">
       <div className="card-body">
-        <table className="table table-compact">
+        <table className="table table-sm">
           <tbody>
             <tr>
               <th className="bg-base-300 rounded-t-lg">Subtotal</th>

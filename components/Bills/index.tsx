@@ -58,7 +58,7 @@ const BillTab = () => {
             </div>
           </div>
           <div className="overflow-x-auto">
-            <table className="table table-auto table-zebra table-compact xs:table-normal">
+            <table className="table table-auto table-zebra table-sm xs:table-normal">
               <thead>
                 <tr>
                   <th className="w-full">Item Name</th>

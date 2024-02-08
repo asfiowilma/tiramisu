@@ -1,6 +1,6 @@
-import { useBillStore } from "@/services/hooks/useBillStore";
 import React from "react";
 import formatCurrency from "@/services/utils/formatCurrency";
+import { useBillStore } from "@/services/hooks/useBillStore";
 
 const BillSummary = () => {
   const { getSubtotal, getTaxTotal, getTotal } = useBillStore();
@@ -8,7 +8,7 @@ const BillSummary = () => {
   return (
     <div className="card card-compact sm:card-normal bg-base-100 mb-14 sm:mb-6">
       <div className="card-body">
-        <table className="table table-compact">
+        <table className="table table-sm">
           <tbody>
             <tr>
               <th className="bg-base-300 rounded-t-lg">Subtotal</th>

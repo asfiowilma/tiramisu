@@ -1,11 +1,12 @@
-import { useInvoiceStore } from "@/services/hooks/useInvoiceStore";
 import React, { useState } from "react";
-import { FaPlus } from "react-icons/fa";
-import { IoReceipt } from "react-icons/io5";
+
 import ConfirmationDialog from "../ConfirmationDialog";
+import { FaPlus } from "react-icons/fa";
 import InvoiceForm from "./InvoiceForm";
 import InvoiceRow from "./InvoiceRow";
 import InvoiceSummary from "./InvoiceSummary";
+import { IoReceipt } from "react-icons/io5";
+import { useInvoiceStore } from "@/services/hooks/useInvoiceStore";
 
 const InvoiceTable = ({ isPrinting }: Printable) => {
   const { invoiceItems, removeAllInvoiceItem, removeAllTaxRates, setActiveInvoice } =
@@ -55,7 +56,7 @@ const InvoiceTable = ({ isPrinting }: Printable) => {
             </div>
           </div>
           <div className="overflow-x-auto">
-            <table className="table table-auto  table-compact xs:table-normal">
+            <table className="table table-auto  table-sm xs:table-normal">
               <thead>
                 <tr>
                   <th className="w-full">Item Name</th>

@@ -11,7 +11,7 @@ const SummaryTable = () => {
   const { getTotal } = useBillStore();
 
   return (
-    <table className="table table-compact">
+    <table className="table text-base">
       <thead>
         <tr>
           <th>Name</th>
@@ -33,11 +33,9 @@ const SummaryTable = () => {
               <Settlements settlements={person.settlement} isSummary />
             </td>
             <td>
-              <div className="flex justify-between">
+              <div className="flex justify-between text-base">
                 <span>Rp</span>
-                <span className="text-lg font-medium text-accent">
-                  {formatCurrency(person.due ?? 0)}
-                </span>
+                <span className="font-medium text-accent">{formatCurrency(person.due ?? 0)}</span>
               </div>
             </td>
           </tr>
@@ -54,7 +52,7 @@ const SummaryTable = () => {
       </tbody>
       <tfoot>
         <tr>
-          <td className="uppercase">total</td>
+          <td className="text-right uppercase">total</td>
           <td className="flex justify-between">
             <span>Rp</span> <span>{formatCurrency(getTotal())}</span>
           </td>
